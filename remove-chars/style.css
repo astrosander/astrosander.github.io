@@ -1,0 +1,26 @@
+.custom-button {
+  display: block;
+  font-size: 24px;
+  padding: 12px 18px;
+  background-color: #b06f2e;
+  color: white;
+  margin: 0 auto;
+  margin-top: 10px;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.custom-textarea {
+  color: #f2a659;
+  background-color: #303841;
+  border: none;
+}
+.cursive-text {
+  display: block;
+
+  margin: 0 auto;
+  margin-top: 10px;
+
+  font-size: 24px; /* Adjust the size as needed */
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Remove Line Breaks and Numbers</title>
+  <link rel="icon" href="remove.png" type="image/png">
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body bgcolor="#505861">
+  
+  <style>
+
+
+  </style>
+
+  <textarea id="inputString" class="custom-textarea" rows="20" cols="200" placeholder="Enter a string"></textarea><br>
+
+  <button onclick="modifyAndCopy()" class="custom-button">Modify and Copy</button>
+  <!-- <p class="cursive-text"><i>Your cursive text here</i></p> -->
+  <script>
+
+
+    var inputTextarea = document.getElementById("inputString");
+
+    inputTextarea.addEventListener("keydown", function(event) {
+      if (event.ctrlKey && event.keyCode === 13) { // 13 is the key code for Enter
+        event.preventDefault(); // Prevent the default Enter key behavior
+        modifyAndCopy();
+      }
+    });
+
+    function modifyAndCopy() {
+      var input = document.getElementById("inputString").value;
+
+      var modifiedString = input.replace(/[\n]+/g, "").replace(/[0-9]/g, "");
+
+      var tempTextarea = document.createElement("textarea");
+      tempTextarea.value = modifiedString;
+      document.body.appendChild(tempTextarea);
+      tempTextarea.select();
+      document.execCommand("copy");
+      document.body.removeChild(tempTextarea);
+
+      alert(modifiedString + "\nhas been add to the clipboard");
+    }
+  </script>
+</body>
+
+</html>
