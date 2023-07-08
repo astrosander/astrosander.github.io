@@ -21,9 +21,6 @@
 }
 
 .result-notification {
-  display: block;
   color: #0cab9c;
-  border: none;
-  margin-top: 50px;
   font-size: 24px;
 }
