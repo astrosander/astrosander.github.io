@@ -8,16 +8,13 @@
 </head>
 
 <body bgcolor="#505861">
-  
-  <style>
-
-
-  </style>
 
   <textarea id="inputString" class="custom-textarea" rows="20" cols="200" placeholder="Enter a string"></textarea><br>
 
-  <button onclick="modifyAndCopy()" class="custom-button">Modify and Copy</button>
-  <!-- <p class="cursive-text"><i>Your cursive text here</i></p> -->
+  <button onclick="modifyAndCopy()" class="custom-button">Modify!</button>
+
+  <p class="result-notification" id="myText" >Enter your text and then press <i>Enter</i> or cilck the <i>button</i></p>
+
   <script>
 
 
@@ -41,10 +38,14 @@
       tempTextarea.select();
       document.execCommand("copy");
       document.body.removeChild(tempTextarea);
+      document.getElementById("myText").textContent = ""
 
-      alert(modifiedString + "\nhas been add to the clipboard");
+      var myTextElement = document.getElementById("myText");
+      myTextElement.textContent = "";
+      myTextElement.textContent = "“" + modifiedString + "”\nhas been add to the clipboard";
     }
   </script>
 </body>
 
 </html>
+
