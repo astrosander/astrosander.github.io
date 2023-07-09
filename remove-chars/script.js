@@ -9,8 +9,8 @@ inputTextarea.addEventListener("keydown", function(event) {
 
 function modifyAndCopy() {
   var input = document.getElementById("inputString").value;
-
-  var modifiedString = input.replace(/[\n]+/g, "").replace(/[0-9]/g, "");
+ 
+  var modifiedString = input.replace(/[\n]+/g, " ").replace(/[0-9]/g, "");
 
   var tempTextarea = document.createElement("textarea");
   tempTextarea.value = modifiedString;
