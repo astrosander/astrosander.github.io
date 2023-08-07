@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sample Test Page</title>
+    </head>
+    <body>
+        <h2>Movie List</h2>
+        <table id = "tb1" border = "1">
+            <tr>
+                <th>movieID</th>
+                <th>title</th>
+                <th>poster</th>
+            </tr>
+        </table>
+        <script>
+            fetch("people.json")
+                .then(response => response.json())
+                .then(data => {
+                    for (var i = 0; i<data.items.length; i++){
+                        let vmovieID = data.items[i].movieID;
+                        let vtitle = data.items[i].title;
+                        let vposter = data.items[i].poster;
+                            document.querySelector("#tb1").innerHTML += `
+                                <tr>
+                                    <td>${vmovieID}</td>
+                                    <td>${vtitle}</td>
+                                    <td>${vposter}</td>
+                                </tr>`;
+                    }
+                })
+        </script>
+    </body>
+</html>
