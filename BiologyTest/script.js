@@ -21,6 +21,9 @@ function getRandomElement() {
     }
 
     document.getElementById("random-element").textContent = randomItem;
+    var textElement = document.getElementById("random-element");
+    textElement.style.textDecoration = "underline";
+
     name = randomItem;
 }
 
