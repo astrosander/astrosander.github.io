@@ -6,6 +6,7 @@ body {
 }
 
 header {
+    width: 100%;
     background-color: #333;
     color: #fff;
     text-align: center;
@@ -18,10 +19,34 @@ h1 {
 
 section {
     background-color: #fff;
-    margin: 1em;
+    width: 600px;
+    length: 500px;
+    margin: 0 auto;
+    margin-top: 2em;
+    margin-bottom: 2em;
+/*    margin-left: 25em;
+    margin-right: 25em;
+    margin-bottom: 2em;
+    margin-top: 2em;*/
     padding: 1em;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+
+img {
+  display: block;
+}
+
+a {
+    color: #000000;
+    text-decoration: none;
+    border-bottom: 2px solid red; 
+  }
+
+a:hover {
+    color: #ff0000;
+    border-bottom: none;
 }
 
 footer {
@@ -31,4 +56,13 @@ footer {
     color: #fff;
 }
 
-/* Add more styling as needed */
+footer a{
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 2px solid red; 
+}
+
+footer a:hover{
+    color: #ff0000;
+    border-bottom: none;
+}
