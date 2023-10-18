@@ -1,9 +1,9 @@
 body {
-    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
 }
+
 
 header {
     width: 100%;
@@ -24,10 +24,6 @@ section {
     margin: 0 auto;
     margin-top: 2em;
     margin-bottom: 2em;
-/*    margin-left: 25em;
-    margin-right: 25em;
-    margin-bottom: 2em;
-    margin-top: 2em;*/
     padding: 1em;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -39,15 +35,21 @@ img {
 }
 
 a {
-    color: #000000;
+    color: black;
     text-decoration: none;
-    border-bottom: 2px solid red; 
+    border-bottom: 3px dotted #d47310;  
+    transition: font-weight border-bottom 0.3s ease;
   }
 
 a:hover {
-    color: #ff0000;
-    border-bottom: none;
+    color: #d47310;
+    border-bottom: 3px solid #d47310; 
 }
+img{
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+
+}
+
 
 footer {
     text-align: center;
@@ -59,10 +61,11 @@ footer {
 footer a{
     color: #fff;
     text-decoration: none;
-    border-bottom: 2px solid red; 
+    border-bottom: 3px dotted #d47310;  
+    transition: font-weight border-bottom 0.3s ease;
 }
 
 footer a:hover{
-    color: #ff0000;
-    border-bottom: none;
+    color: #d47310;
+    border-bottom: 3px solid #d47310; 
 }
