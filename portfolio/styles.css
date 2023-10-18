@@ -6,7 +6,7 @@ body {
 
 
 header {
-    width: 100%;
+    width: auto;
     background-color: #333;
     color: #fff;
     text-align: center;
@@ -19,12 +19,12 @@ h1 {
 
 section {
     background-color: #fff;
-    width: 600px;
-    length: 500px;
+    width: 650px;
+/*    length: 500px;*/
     margin: 0 auto;
     margin-top: 2em;
     margin-bottom: 2em;
-    padding: 1em;
+    padding: 2em;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
