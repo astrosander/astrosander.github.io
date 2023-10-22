@@ -37,13 +37,13 @@ img {
 a {
     color: black;
     text-decoration: none;
-    border-bottom: 3px dotted #d47310;  
+    border-bottom: 3px dotted #bf0d0b;  
     transition: font-weight border-bottom 0.3s ease;
   }
 
 a:hover {
-    color: #d47310;
-    border-bottom: 3px solid #d47310; 
+    color: #bf0d0b;
+    border-bottom: 3px solid #bf0d0b; 
 }
 img{
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
