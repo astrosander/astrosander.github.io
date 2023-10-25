@@ -3,7 +3,10 @@ body {
     padding: 0;
     background-color: #f4f4f4;
 }
-
+::selection {
+  color: #fff;
+  background: #aa0000;
+}
 
 header {
     width: auto;
@@ -37,13 +40,14 @@ img {
 a {
     color: black;
     text-decoration: none;
-    border-bottom: 3px dotted #bf0d0b;  
-    transition: font-weight border-bottom 0.3s ease;
+    border-bottom: 3px dotted #aa0000;  
+    transition: border-bottom 0.3s ease;
+    font-weight: bold;
   }
 
 a:hover {
-    color: #bf0d0b;
-    border-bottom: 3px solid #bf0d0b; 
+    color: #aa0000;
+    border-bottom: 3px solid #aa0000; 
 }
 img{
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
@@ -61,11 +65,12 @@ footer {
 footer a{
     color: #fff;
     text-decoration: none;
-    border-bottom: 3px dotted #d47310;  
+    border-bottom: 3px dotted #aa0000;  
     transition: font-weight border-bottom 0.3s ease;
 }
 
 footer a:hover{
-    color: #d47310;
-    border-bottom: 3px solid #d47310; 
+    color: #aa0000;
+    border-bottom: 3px solid #aa0000; 
 }
+    
