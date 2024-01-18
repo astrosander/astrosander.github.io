@@ -32,3 +32,6 @@ header h1 {
     font-family: GothamPro;
     font-weight: bold;
 }
+section h2 {
+	text-align: center;  
+}
