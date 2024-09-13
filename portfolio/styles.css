@@ -31,8 +31,6 @@ section {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
-
-
 img {
   display: block;
 }
@@ -53,7 +51,6 @@ img{
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
 
 }
-
 
 footer {
     text-align: center;
@@ -83,4 +80,13 @@ img {
   margin-left: auto;
   margin-right: auto;
   width: 50%;
+}
+
+p{
+    width: 90%;
+    margin:auto;
+    padding:0.2em;
+/*    text-align: justify;
+    padding-left: 60px;
+    padding-right: 60px;*/
 }
