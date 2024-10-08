@@ -1303,3 +1303,19 @@ body {
         display: inline;
     }
 }
+.inverse-fill {
+    fill-opacity:1;
+    fill:#f0f0f0;
+    stroke:#b3b3b3;
+}
+
+@media (prefers-color-scheme: dark) {
+    .inverse-fill {
+    fill:#1e1e1e;
+    fill:white;
+    stroke:#646464;
+
+    fill:#f0f0f0;
+    stroke:#b3b3b3;
+    }
+}
