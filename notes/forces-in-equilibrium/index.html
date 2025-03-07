@@ -1,0 +1,190 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Aliaksandr Melnichenka Personal Website</title>
+        <link rel="icon" href="../../img/favicon.ico" />
+
+        <!-- Google Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Bootstrap CSS -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+        />
+
+        <!-- MathJax -->
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script
+            id="MathJax-script"
+            async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+        ></script>
+
+        <style>
+            body {
+                font-family: 'Inter', sans-serif;
+                background-color: #f8f9fa;
+                margin: 0;
+                padding: 0;
+            }
+            .navbar {
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            }
+            .hero-section {
+                background: linear-gradient(135deg, #007bff 0%, #6610f2 100%);
+                color: #fff;
+                padding: 4rem 0;
+                text-align: center;
+                margin-bottom: 2rem;
+            }
+            .hero-section h1 {
+                font-size: 2.5rem;
+                font-weight: 600;
+                margin-bottom: 1rem;
+            }
+            .hero-section p {
+                font-size: 1.2rem;
+                margin-bottom: 0;
+            }
+            .content-container {
+                max-width: 900px;
+                margin: 0 auto;
+                padding: 1rem;
+            }
+            .math {
+                color: #000;
+                font-size: 1.05em;
+            }
+            h1, h2, h3, h4, h5, h6 {
+                margin-top: 1.5rem;
+                margin-bottom: 0.75rem;
+            }
+            p {
+                margin-bottom: 1rem;
+                line-height: 1.6;
+            }
+            pre {
+                background: #f4f4f4;
+                padding: 15px;
+                border-radius: 5px;
+                overflow-x: auto;
+                margin-bottom: 1rem;
+            }
+            code {
+                color: #000;
+                font-weight: 600;
+                font-size: 0.95rem;
+            }
+            footer {
+                background-color: #f1f1f1;
+                text-align: center;
+                padding: 10px 0;
+                margin-top: 2rem;
+            }
+            .footer-text {
+                margin: 0;
+                color: #6c757d;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Navigation Bar (Fixed-top for a modern sticky header) -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+          <div class="container">
+            <a class="navbar-brand fw-bold" href="#">My Public Notes</a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarContent"
+              aria-controls="navbarContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="https://melnichenka.com/">Home</a>
+                </li>
+                <!-- Add more nav links as needed -->
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="content-container p-4">
+            <h3 class="text-3xl font-bold text-gray-800 bg-gradient-to-r from-blue-500 to-purple-500 text-black rounded-lg shadow-md">
+                Notes @ forces-in-equilibrium
+            </h3>
+            <p><strong>NO: The Excel analysis available here: <a href="experimental_analysis.xlsx">experimental_analysis.xlsx</a></strong></p>
+<p>The equlibtium equation</p>
+<p><div class="math">\[
+2mg\cos\theta = Mg \to \cos\theta = \frac{M}{2m}
+\]</div>
+From the geometry:</p>
+<p><div class="math">\[
+\cos\theta = \frac{y}{(L/2)^2+y^2} = \frac{M}{2m}
+\]</div>
+Let's introduce the indementional variable</p>
+<p><div class="math">\[
+\mu = \frac{M}{m}
+\]</div>
+Then, </p>
+<p><div class="math">\[
+\frac{y}{(L/2)^2+y^2} = \frac{\mu}{2}
+\]</div>
+From here,</p>
+<p><div class="math">\[
+\boxed{y=L\frac{\mu}{2\sqrt{4-\mu ^2}}}
+\]</div></p>
+<p>The graph of the following function (<a href="theoretical_plot.py">theoretical_plot.py</a>):</p>
+<p><center>
+<img alt="Figure_1.png" src="Figure_1.svg" />
+</center></p>
+<p>The possible linearization gives:
+<div class="math">\[
+\frac{1}{y^2}=\frac{16}{L^2}\frac{1}{\mu ^2} - \frac{4}{L^2}
+\]</div>
+We will use linear regression to compare theory with the experiment, using the Least Square Method for the equation <span class="math">\(Y=BX+A\)</span>
+where
+<div class="math">\[
+Y=\frac{1}{y^2}, ~B=\frac{16}{L^2},~X=\frac{1}{\mu^2},~A=-\frac{4}{L^2}
+\]</div></p>
+<p>The linearizated plot (<a href="least_square_method.py">least_square_method.py</a>)</p>
+<p><center>
+<img alt="Figure_2.png" src="Figure_2.svg" />
+</center></p>
+<p>The coefficients calculated with the least square method gives:
+<div class="math">\[
+B= 0.004262 ± 0.000045
+\]</div>
+<div class="math">\[
+A= -0.001129 ± 0.000099
+\]</div>
+And the correlation coefficient became close to 1: <span class="math">\(R^2= 0.9994\)</span></p>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p class="footer-text">© 2025 Aliaksandr Melnichenka Personal Website</p>
+        </footer>
+
+        <!-- Bootstrap JS -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        ></script>
+    </body>
+    </html>
+    
