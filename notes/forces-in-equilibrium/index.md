@@ -1,5 +1,5 @@
 
-__NO: The Excel analysis available here: [experimental_analysis.xlsx](experimental_analysis.xlsx)__
+__NO: The Excel analysis & ploting data available here: [experimental_analysis.xlsx](experimental_analysis.xlsx) and [raw_data.csv](raw_data.csv)__
 
 The equlibtium equation
 
