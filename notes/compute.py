@@ -15,10 +15,16 @@ def convert_md_to_html(md_file, output_html):
 
     # Inline Equations: $...$ → <span class="math">\( ... \)</span>
     html_content = re.sub(r'\$(.*?)\$', r'<span class="math">\\(\1\\)</span>', html_content)
-    
+
+    # Find and wrap images in a responsive Bootstrap class
+    html_content = re.sub(
+        r'<img(.*?)src="(.*?)"(.*?)>',
+        r'<div class="text-center"><img class="img-fluid rounded shadow mt-3 mb-3" src="\2" \1 \3></div>',
+        html_content
+    )
+
     match = re.search(r'\\(.*?)\\', md_file)
     title = match.group(1) if match else "Unknown"
-
 
     # A modern Bootstrap-based template
     html_template = f"""
@@ -116,6 +122,10 @@ def convert_md_to_html(md_file, output_html):
             .footer-text {{
                 margin: 0;
                 color: #6c757d;
+            }}
+            img {{
+                max-width: 100%;
+                height: auto;
             }}
         </style>
     </head>
