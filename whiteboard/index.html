@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Realtime Whiteboard</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #f0f2f5;
+      --fg: #333;
+      --card-bg: #fff;
+      --accent: #007bff;
+      --radius: 8px;
+      --shadow: 0 4px 12px rgba(0,0,0,0.1);
+      --toolbar-h: 48px;
+      --pdf-header-h: 40px;
+    }
+    * { box-sizing: border-box; margin:0; padding:0 }
+    html, body {
+      width:100%; height:100%;
+      background: var(--bg);
+      font-family: 'Roboto', sans-serif;
+      overflow: hidden;
+      cursor: grab;
+    }
+    /* TOOLBAR */
+    #toolbar {
+      position: fixed;
+      top: 10px; left:50%;
+      transform: translateX(-50%);
+      height: var(--toolbar-h);
+      background: var(--card-bg);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      padding: 0 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 2000;
+    }
+    #toolbar input[type=file] { cursor: pointer }
+    #toolbar button {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius);
+      padding: 6px 12px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    #toolbar input[type=color],
+    #toolbar input[type=range] {
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    #toolbar input[type=color] { width: 32px; height: 32px }
+    #toolbar input[type=range] { width: 100px }
+    /* BOARD */
+    #board {
+      position: absolute;
+      top:0; left:0; right:0; bottom:0;
+      overflow: auto;
+      perspective: 1000px;
+    }
+    /* GLOBAL DRAWING CANVAS */
+    #globalDrawCanvas {
+      position: absolute;
+      top:0; left:0;
+      width:100%; height:100%;
+      z-index: 1500;
+      pointer-events: none;
+    }
+    /* ITEMS */
+    .item {
+      position: absolute;
+      background: var(--card-bg);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      overflow: hidden;
+      touch-action: none;
+      z-index: 500;
+    }
+    .item .remove-btn {
+      position: absolute;
+      top: 8px; right: 8px;
+      width: 24px; height: 24px;
+      background: rgba(0,0,0,0.4);
+      color: #fff;
+      border: none; border-radius: 50%;
+      font-size: 16px; line-height: 24px;
+      text-align: center;
+      cursor: pointer;
+      z-index: 1000;
+    }
+    /* PDF WINDOWS */
+    .pdf-header {
+      position: absolute;
+      top:0; left:0; right:0;
+      height: var(--pdf-header-h);
+      background: rgba(255,255,255,0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      font-size: 16px;
+      z-index: 600;
+    }
+    .pdf-header button {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius);
+      padding: 4px 8px;
+      cursor: pointer;
+    }
+    .pdf-container {
+      position: absolute;
+      top: var(--pdf-header-h);
+      bottom: 0; left: 0; right: 0;
+      overflow: auto;
+      background: #eee;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    /* LATEX NOTES */
+    .latex-note {
+      position: absolute;
+      background: var(--card-bg);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      padding: 12px;
+      min-width: 120px; min-height: 60px;
+      overflow: auto;
+      z-index: 1000;
+      touch-action: none;
+    }
+    .latex-note .remove-btn,
+    .latex-note .edit-btn {
+      position: absolute; top: 6px;
+      width: 20px; height: 20px;
+      background: rgba(0,0,0,0.4);
+      color: #fff;
+      border: none; border-radius: 50%;
+      font-size: 12px; line-height: 20px;
+      text-align: center; cursor: pointer;
+      z-index: 1000;
+    }
+    .latex-note .remove-btn { right: 6px }
+    .latex-note .edit-btn   { right: 32px }
+    /* LATEX MODAL */
+    #latexModal {
+      display: none;
+      position: fixed;
+      top:0; left:0; right:0; bottom:0;
+      background: rgba(0,0,0,0.5);
+      align-items: center;
+      justify-content: center;
+      z-index: 3000;
+    }
+    #latexModal .modal-content {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 16px;
+      width: 400px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    #latexModal textarea {
+      width: 100%; height: 100px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 8px;
+      font-family: monospace;
+      font-size: 14px;
+      resize: vertical;
+    }
+    #latexModal #latexPreview {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 8px;
+      min-height: 40px;
+      background: #fafafa;
+    }
+    #latexModal .buttons {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+    #latexModal .buttons button {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius);
+      padding: 6px 12px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="toolbar">
+    <input type="file" id="fileInput" multiple/>
+    <button id="drawBtn">Draw</button>
+    <button id="clearDrawBtn">Clear Draw</button>
+    <input type="color" id="colorPicker" value="#000000" title="Brush Color"/>
+    <input type="range" id="brushSize" min="1" max="30" value="3" title="Brush Size"/>
+    <button id="noteBtn">Add Note</button>
+  </div>
+
+  <div id="board">
+    <canvas id="globalDrawCanvas"></canvas>
+  </div>
+
+  <!-- LaTeX Modal -->
+  <div id="latexModal">
+    <div class="modal-content">
+      <label for="latexTextarea">Enter LaTeX (no $$):</label>
+      <textarea id="latexTextarea" placeholder="e.g. \frac{a}{b}"></textarea>
+      <div id="latexPreview"></div>
+      <div class="buttons">
+        <button id="latexCancelBtn">Cancel</button>
+        <button id="latexSaveBtn">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Libs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/interact.js/1.10.11/interact.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <script>
+  // globals
+  const board       = document.getElementById('board');
+  const fileInput   = document.getElementById('fileInput');
+  const drawBtn     = document.getElementById('drawBtn');
+  const clearBtn    = document.getElementById('clearDrawBtn');
+  const colorPicker = document.getElementById('colorPicker');
+  const brushSize   = document.getElementById('brushSize');
+  const noteBtn     = document.getElementById('noteBtn');
+  const globalCanvas= document.getElementById('globalDrawCanvas');
+  const gctx        = globalCanvas.getContext('2d');
+  const DPR         = window.devicePixelRatio || 1;
+
+  // LaTeX modal elems
+  const latexModal     = document.getElementById('latexModal');
+  const latexTextarea  = document.getElementById('latexTextarea');
+  const latexPreview   = document.getElementById('latexPreview');
+  const latexSaveBtn   = document.getElementById('latexSaveBtn');
+  const latexCancelBtn = document.getElementById('latexCancelBtn');
+  let editingNote = null;
+
+  // PDF.js setup
+  const pdfjs = window['pdfjs-dist/build/pdf'];
+  pdfjs.GlobalWorkerOptions.workerSrc =
+    'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+
+  // ——— resize global drawing canvas ———
+  function resizeGlobal(){
+    const W = board.clientWidth, H = board.clientHeight;
+    globalCanvas.width  = W * DPR;
+    globalCanvas.height = H * DPR;
+    globalCanvas.style.width  = W + 'px';
+    globalCanvas.style.height = H + 'px';
+    gctx.scale(DPR, DPR);
+  }
+  window.addEventListener('resize', resizeGlobal);
+  resizeGlobal();
+
+  // ——— drawing logic ———
+  let drawMode = false, drawing = false, pts = [];
+  drawBtn.onclick = () => {
+    drawMode = !drawMode;
+    drawBtn.textContent = drawMode ? 'Drawing…' : 'Draw';
+    globalCanvas.style.pointerEvents = drawMode ? 'auto' : 'none';
+    // solid line
+    gctx.setLineDash([]);
+  };
+  clearBtn.onclick = () => {
+    gctx.clearRect(0,0,globalCanvas.width, globalCanvas.height);
+  };
+  globalCanvas.addEventListener('mousedown', e => {
+    if (!drawMode) return;
+    drawing = true;
+    pts = [{ x:e.offsetX, y:e.offsetY }];
+  });
+globalCanvas.addEventListener('mousemove', e => {
+  if (!drawing) return;
+  pts.push({ x: e.offsetX, y: e.offsetY });
+  if (pts.length < 3) return;
+
+  gctx.beginPath();
+  gctx.setLineDash([]); // гарантируем сплошную линию
+  gctx.moveTo(pts[0].x, pts[0].y);
+
+  for (let i = 1; i < pts.length - 1; i++) {
+    const midX = (pts[i].x + pts[i + 1].x) / 2;
+    const midY = (pts[i].y + pts[i + 1].y) / 2;
+    gctx.quadraticCurveTo(pts[i].x, pts[i].y, midX, midY);
+  }
+
+  gctx.shadowBlur = 1;
+  gctx.globalAlpha = 0.95; // slightly translucent stroke
+
+  gctx.strokeStyle = colorPicker.value;
+  gctx.lineWidth = brushSize.value;
+  gctx.lineCap = 'round';
+  gctx.stroke();
+});
+
+  ['mouseup','mouseleave'].forEach(evt =>
+    globalCanvas.addEventListener(evt, _=>{ drawing=false; pts=[] })
+  );
+
+  // ——— panning the board ———
+  let isPanning = false, panStart = {}, scrollStart = {};
+  board.addEventListener('mousedown', e => {
+    if (drawMode) return;
+    if (e.target === board) {
+      isPanning = true;
+      panStart = { x:e.clientX, y:e.clientY };
+      scrollStart = { left: board.scrollLeft, top: board.scrollTop };
+      board.style.cursor = 'grabbing';
+    }
+  });
+  board.addEventListener('mousemove', e => {
+    if (!isPanning) return;
+    const dx = panStart.x - e.clientX;
+    const dy = panStart.y - e.clientY;
+    board.scrollLeft = scrollStart.left + dx;
+    board.scrollTop  = scrollStart.top  + dy;
+  });
+  window.addEventListener('mouseup', _ => {
+    if (isPanning) {
+      isPanning = false;
+      board.style.cursor = 'grab';
+    }
+  });
+
+  // ——— make items interactive ———
+  function makeInteractive(el){
+    interact(el)
+      .draggable({ inertia:true, listeners:{ move: dragMove } })
+      .resizable({
+        edges:{ left:true, right:true, bottom:true, top:true },
+        modifiers:[ interact.modifiers.aspectRatio({}) ],
+        inertia:true
+      })
+      .on('resizemove', ev => {
+        const t = ev.target;
+        let x = parseFloat(t.dataset.x)||0;
+        let y = parseFloat(t.dataset.y)||0;
+        t.style.width  = ev.rect.width  + 'px';
+        t.style.height = ev.rect.height + 'px';
+        x += ev.deltaRect.left;  y += ev.deltaRect.top;
+        t.style.transform = `translate(${x}px,${y}px)`;
+        t.dataset.x = x; t.dataset.y = y;
+      });
+  }
+  function dragMove(e){
+    const t = e.target;
+    const x = (parseFloat(t.dataset.x)||0) + e.dx;
+    const y = (parseFloat(t.dataset.y)||0) + e.dy;
+    t.style.transform = `translate(${x}px,${y}px)`;
+    t.dataset.x = x; t.dataset.y = y;
+  }
+
+  // ——— handle file uploads ———
+  fileInput.addEventListener('change', e => {
+    Array.from(e.target.files).forEach(f => addFile(f));
+    fileInput.value = '';
+  });
+  async function addFile(file){
+    const url = URL.createObjectURL(file);
+    const item = document.createElement('div');
+    item.className = 'item';
+    item.dataset.x = 100; item.dataset.y = 100;
+    item.style.transform = 'translate(100px,100px)';
+    item.style.width  = '300px';
+    item.style.height = '200px';
+
+    // close btn
+    const rm = document.createElement('button');
+    rm.className = 'remove-btn';
+    rm.textContent = '×';
+    rm.onclick = e => { e.stopPropagation(); board.removeChild(item) };
+    item.appendChild(rm);
+
+    if (file.type.startsWith('image/')) {
+      const img = new Image();
+      img.src = url;
+      img.style.width='100%'; img.style.height='100%';
+      item.appendChild(img);
+
+    } else if (file.type === 'application/pdf') {
+      const pdf = await pdfjs.getDocument(url).promise;
+      const pg1 = await pdf.getPage(1);
+      const vp1 = pg1.getViewport({ scale: DPR }); 
+      // now vp1.width/height are already retina-aware
+      const screenH    = window.innerHeight;
+      const totalH     = screenH * 0.9;
+      const contentH   = totalH - parseInt(getComputedStyle(document.documentElement)
+                          .getPropertyValue('--pdf-header-h'));
+      const scaleCSS   = contentH / (vp1.height / DPR);
+      const cssWidth   = (vp1.width / DPR) * scaleCSS;
+
+      // set item size
+      item.style.width  = cssWidth + 'px';
+      item.style.height = totalH + 'px';
+
+      // header
+      const hdr = document.createElement('div');
+      hdr.className = 'pdf-header';
+      const prev = document.createElement('button');
+      const next = document.createElement('button');
+      const lbl  = document.createElement('span');
+      prev.textContent = '<'; next.textContent = '>';
+      let cur=1, total=pdf.numPages;
+      lbl.textContent = `${cur} / ${total}`;
+      hdr.append(prev, lbl, next);
+      item.appendChild(hdr);
+
+      // scroll container
+      const cont = document.createElement('div');
+      cont.className = 'pdf-container';
+      item.appendChild(cont);
+
+      // render pages at high-dpi
+      for (let i=1; i<=total; i++){
+        const pg = await pdf.getPage(i);
+        const vp = pg.getViewport({ scale: DPR * scaleCSS });
+        const cn = document.createElement('canvas');
+        cn.width  = vp.width;
+        cn.height = vp.height;
+        const cx = cn.getContext('2d');
+        await pg.render({ canvasContext: cx, viewport: vp }).promise;
+        // CSS size
+        cn.style.width  = (vp.width / DPR) + 'px';
+        cn.style.height = (vp.height / DPR) + 'px';
+        cn.dataset.page = i;
+        cont.appendChild(cn);
+      }
+      function goTo(n){
+        if(n<1||n>total) return;
+        cur = n; lbl.textContent = `${cur} / ${total}`;
+        const tgt = cont.querySelector(`canvas[data-page='${n}']`);
+        cont.scrollTo({ top: tgt.offsetTop, behavior:'smooth' });
+      }
+      prev.onclick = () => goTo(cur-1);
+      next.onclick = () => goTo(cur+1);
+
+    } else if (/\.(csv|xlsx?)$/i.test(file.name)) {
+      const data = await file.arrayBuffer();
+      const wb = XLSX.read(data,{ type:'array' });
+      const sh = wb.SheetNames[0];
+      const html = XLSX.utils.sheet_to_html(wb.Sheets[sh]);
+      const wrap = document.createElement('div');
+      wrap.innerHTML = html;
+      wrap.style.width='100%'; wrap.style.height='100%'; wrap.style.overflow='auto';
+      item.appendChild(wrap);
+
+    } else {
+      const emb = document.createElement('embed');
+      emb.src = url; emb.type = file.type;
+      emb.style.width='100%'; emb.style.height='100%';
+      item.appendChild(emb);
+    }
+
+    board.appendChild(item);
+    makeInteractive(item);
+  }
+
+  // ——— LaTeX modal & live preview ———
+  function openLatexModal(note=null){
+    editingNote = note;
+    latexTextarea.value = note?.dataset.latex || '';
+    latexPreview.innerHTML = note
+      ? `$$${note.dataset.latex}$$`
+      : '';
+    MathJax.typesetPromise([latexPreview]);
+    latexModal.style.display = 'flex';
+    latexTextarea.focus();
+  }
+  latexTextarea.addEventListener('input', () => {
+    const t = latexTextarea.value.trim();
+    latexPreview.innerHTML = t ? `$$${t}$$` : '';
+    MathJax.typesetPromise([latexPreview]);
+  });
+  latexCancelBtn.onclick = () => {
+    latexModal.style.display = 'none';
+    editingNote = null;
+  };
+  latexSaveBtn.onclick = () => {
+    const tex = latexTextarea.value.trim();
+    if (!tex) return alert('Please enter LaTeX.');
+    if (editingNote) {
+      editingNote.dataset.latex = tex;
+      editingNote.querySelector('.latex-content')
+                 .innerHTML = `$$${tex}$$`;
+      MathJax.typesetPromise();
+    } else {
+      const note = document.createElement('div');
+      note.className = 'latex-note';
+      note.dataset.latex = tex;
+      note.innerHTML = `
+        <button class="remove-btn">×</button>
+        <button class="edit-btn">✎</button>
+        <div class="latex-content">$$${tex}$$</div>
+      `;
+      // center on board
+      const W = board.clientWidth, H = board.clientHeight;
+      const w = 200, h = 80;
+      note.dataset.x = (W - w)/2; note.dataset.y = (H - h)/2;
+      note.style.width  = w + 'px';
+      note.style.height = h + 'px';
+      note.style.transform = 
+        `translate(${note.dataset.x}px,${note.dataset.y}px)`;
+
+      note.querySelector('.remove-btn')
+          .onclick = e=>{ e.stopPropagation(); board.removeChild(note) };
+      note.querySelector('.edit-btn')
+          .onclick = e=>{ e.stopPropagation(); openLatexModal(note) };
+
+      board.appendChild(note);
+      makeInteractive(note);
+      MathJax.typesetPromise();
+    }
+    latexModal.style.display = 'none';
+  };
+  noteBtn.onclick = () => openLatexModal();
+
+  </script>
+</body>
+</html>
