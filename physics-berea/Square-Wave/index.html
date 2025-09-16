@@ -3,54 +3,265 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>RC with Square-Wave Input</title>
+<title>RC Circuit Waveform Response</title>
 <script src="https://cdn.plot.ly/plotly-2.30.0.min.js"></script>
 <style>
-  body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:24px;line-height:1.3}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:16px}
-  .ctrl{background:#f6f7f9;border:1px solid #e5e7eb;border-radius:12px;padding:12px}
-  .ctrl label{display:flex;justify-content:space-between;font-size:14px;margin-bottom:6px}
-  .ctrl input[type="range"]{width:100%}
-  .row{display:flex;gap:10px;align-items:center;margin-top:6px}
-  .row input[type="number"]{width:90px}
-  .tags{font-size:12px;color:#555;margin-top:4px}
-  button{padding:8px 12px;border-radius:10px;border:1px solid #d1d5db;background:#fff;cursor:pointer}
-  button:active{transform:translateY(1px)}
+  :root {
+    --primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --surface: rgba(255, 255, 255, 0.95);
+    --surface-dark: rgba(0, 0, 0, 0.02);
+    --border: rgba(255, 255, 255, 0.2);
+    --text-primary: #2d3748;
+    --text-secondary: #718096;
+    --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  * { box-sizing: border-box; }
+  
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    min-height: 100vh;
+    line-height: 1.6;
+    color: var(--text-primary);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: var(--surface);
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+  }
+
+  h2 {
+    margin: 0 0 32px 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: var(--primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: center;
+  }
+
+  .controls-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+
+  .ctrl {
+    background: var(--surface);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+  }
+
+  .ctrl:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .ctrl label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+  }
+
+  .ctrl label span {
+    background: var(--accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+  }
+
+  .ctrl input[type="range"] {
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--surface-dark);
+    outline: none;
+    -webkit-appearance: none;
+    margin: 8px 0;
+  }
+
+  .ctrl input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--primary);
+    cursor: pointer;
+    box-shadow: var(--shadow);
+  }
+
+  .ctrl input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--primary);
+    cursor: pointer;
+    border: none;
+    box-shadow: var(--shadow);
+  }
+
+  .row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-top: 12px;
+  }
+
+  .row input[type="number"], .row select {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.5);
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s ease;
+  }
+
+  .row input[type="number"]:focus, .row select:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  }
+
+  .tags {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-top: 8px;
+    padding: 6px 10px;
+    background: var(--surface-dark);
+    border-radius: 6px;
+  }
+
+  button {
+    padding: 10px 16px;
+    border-radius: 12px;
+    border: none;
+    background: var(--secondary);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+  }
+
+  button:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow);
+  }
+
+  button:active {
+    transform: translateY(0);
+  }
+
+  .checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .checkbox-container input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #667eea;
+  }
+
+  .plot-container {
+    background: var(--surface);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  @media (max-width: 768px) {
+    .container { padding: 20px; }
+    h2 { font-size: 2rem; }
+    .controls-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
-<h2>RC Response to Square Wave</h2>
-<div class="grid">
-  <div class="ctrl">
-    <label>R (Ω) <span id="Rval">1.00</span></label>
-    <input id="R" type="range" min="0.1" max="5" step="0.01" value="1">
-    <div class="row"><input id="Rnum" type="number" min="0.1" max="5" step="0.01" value="1"></div>
-    <div class="tags">τ = R·C</div>
-  </div>
-  <div class="ctrl">
-    <label>C (F) <span id="Cval">0.10</span></label>
-    <input id="C" type="range" min="0.01" max="0.5" step="0.001" value="0.1">
-    <div class="row"><input id="Cnum" type="number" min="0.01" max="0.5" step="0.001" value="0.1"></div>
-    <div class="tags">v₀ = 0 (discharged capacitor)</div>
-  </div>
-  <div class="ctrl">
-    <label>Frequency f (Hz) <span id="Fval">1.00</span></label>
-    <input id="F" type="range" min="0.2" max="5" step="0.01" value="1">
-    <div class="row"><input id="Fnum" type="number" min="0.2" max="5" step="0.01" value="1"></div>
-    <div class="tags">U(t) = square(2πft), amplitude ±1</div>
-  </div>
-  <div class="ctrl">
-    <label>Duration T (s) <span id="Tval">4.00</span></label>
-    <input id="T" type="range" min="1" max="10" step="0.1" value="4">
-    <div class="row">
-      <input id="Tnum" type="number" min="1" max="10" step="0.1" value="4">
-      <button id="reset">Reset to v₀=0</button>
+<div class="container">
+  <h2>RC Circuit Waveform Response</h2>
+  
+  <div class="controls-grid">
+    <div class="ctrl">
+      <label>Waveform Type <span id="waveformDisplay">Square</span></label>
+      <div class="row">
+        <select id="waveform">
+          <option value="square">Square Wave</option>
+          <option value="sine">Sine Wave</option>
+          <option value="triangle">Triangle Wave</option>
+          <option value="sawtooth">Sawtooth Wave</option>
+        </select>
+      </div>
+      <div class="tags">Input signal shape: U(t)</div>
     </div>
-    <div class="tags"><label><input id="showInput" type="checkbox" checked> Show input U(t)</label></div>
+    
+    <div class="ctrl">
+      <label>R (Ω) <span id="Rval">1.00</span></label>
+      <input id="R" type="range" min="0.1" max="5" step="0.01" value="1">
+      <div class="row"><input id="Rnum" type="number" min="0.1" max="5" step="0.01" value="1"></div>
+      <div class="tags">Resistance: τ = R·C</div>
+    </div>
+    
+    <div class="ctrl">
+      <label>C (F) <span id="Cval">0.10</span></label>
+      <input id="C" type="range" min="0.01" max="0.5" step="0.001" value="0.1">
+      <div class="row"><input id="Cnum" type="number" min="0.01" max="0.5" step="0.001" value="0.1"></div>
+      <div class="tags">Capacitance: v₀ = 0 (discharged)</div>
+    </div>
+    
+    <div class="ctrl">
+      <label>Frequency f (Hz) <span id="Fval">1.00</span></label>
+      <input id="F" type="range" min="0.2" max="5" step="0.01" value="1">
+      <div class="row"><input id="Fnum" type="number" min="0.2" max="5" step="0.01" value="1"></div>
+      <div class="tags">Signal frequency: f = 1/(2π)</div>
+    </div>
+    
+    <div class="ctrl">
+      <label>Duration T (s) <span id="Tval">4.00</span></label>
+      <input id="T" type="range" min="1" max="10" step="0.1" value="4">
+      <div class="row">
+        <input id="Tnum" type="number" min="1" max="10" step="0.1" value="4">
+        <button id="reset">Reset Circuit</button>
+      </div>
+      <div class="checkbox-container">
+        <input id="showInput" type="checkbox" checked>
+        <label for="showInput">Show input signal U(t)</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="plot-container">
+    <div id="plot" style="width:100%;height:520px;"></div>
   </div>
 </div>
-
-<div id="plot" style="width:100%;max-width:1100px;height:520px;"></div>
 
 <script>
 const N = 2000;
@@ -61,48 +272,107 @@ function linspace(a,b,n){
   return x;
 }
 
-function simulate(R,C,f,T, v0=null){
-  const t = linspace(0,T,N);
-  const dt = t[1]-t[0];
-  const u = new Array(N);
-  const v = new Array(N);
-  const tau = R*C;
+function generateWaveform(type, f, t) {
+  const waveforms = new Array(t.length);
   
-  // Initialize input square wave
-  for(let i=0;i<N;i++) u[i] = Math.sin(2*Math.PI*f*t[i])>=0 ? 1 : -1;
+  for(let i = 0; i < t.length; i++) {
+    const phase = 2 * Math.PI * f * t[i];
+    
+    switch(type) {
+      case 'square':
+        waveforms[i] = Math.sin(phase) >= 0 ? 1 : -1;
+        break;
+      case 'sine':
+        waveforms[i] = Math.sin(phase);
+        break;
+      case 'triangle':
+        const trianglePhase = (phase % (2 * Math.PI)) / (2 * Math.PI);
+        if (trianglePhase < 0.25) {
+          waveforms[i] = 4 * trianglePhase;
+        } else if (trianglePhase < 0.75) {
+          waveforms[i] = 2 - 4 * trianglePhase;
+        } else {
+          waveforms[i] = 4 * trianglePhase - 4;
+        }
+        break;
+      case 'sawtooth':
+        const sawPhase = (phase % (2 * Math.PI)) / (2 * Math.PI);
+        waveforms[i] = 2 * sawPhase - 1;
+        break;
+      default:
+        waveforms[i] = Math.sin(phase) >= 0 ? 1 : -1; // default to square
+    }
+  }
+  
+  return waveforms;
+}
+
+function simulate(R, C, f, T, waveformType = 'square', v0 = null) {
+  const t = linspace(0, T, N);
+  const dt = t[1] - t[0];
+  const u = generateWaveform(waveformType, f, t);
+  const v = new Array(N);
+  const tau = R * C;
   
   // Set proper initial condition for RC circuit
   v[0] = v0 !== null ? v0 : 0; // Start from 0V (discharged capacitor)
   
   // Simulate RC circuit using Euler's method
-  for(let i=1;i<N;i++) {
-    v[i] = v[i-1] + (dt/tau)*(u[i-1]-v[i-1]);
+  for(let i = 1; i < N; i++) {
+    v[i] = v[i-1] + (dt/tau) * (u[i-1] - v[i-1]);
   }
   
-  return {t,u,v};
+  return {t, u, v};
 }
 
 const els = {
-  R:document.getElementById('R'), Rnum:document.getElementById('Rnum'), Rval:document.getElementById('Rval'),
-  C:document.getElementById('C'), Cnum:document.getElementById('Cnum'), Cval:document.getElementById('Cval'),
-  F:document.getElementById('F'), Fnum:document.getElementById('Fnum'), Fval:document.getElementById('Fval'),
-  T:document.getElementById('T'), Tnum:document.getElementById('Tnum'), Tval:document.getElementById('Tval'),
-  reset:document.getElementById('reset'), showInput:document.getElementById('showInput')
+  waveform: document.getElementById('waveform'),
+  waveformDisplay: document.getElementById('waveformDisplay'),
+  R: document.getElementById('R'), 
+  Rnum: document.getElementById('Rnum'), 
+  Rval: document.getElementById('Rval'),
+  C: document.getElementById('C'), 
+  Cnum: document.getElementById('Cnum'), 
+  Cval: document.getElementById('Cval'),
+  F: document.getElementById('F'), 
+  Fnum: document.getElementById('Fnum'), 
+  Fval: document.getElementById('Fval'),
+  T: document.getElementById('T'), 
+  Tnum: document.getElementById('Tnum'), 
+  Tval: document.getElementById('Tval'),
+  reset: document.getElementById('reset'), 
+  showInput: document.getElementById('showInput')
 };
 
 function sync(a,b,label,fmt=(x)=>x.toFixed(2)){
   a.addEventListener('input',()=>{ b.value=a.value; label.textContent=fmt(+a.value); draw(); });
   b.addEventListener('input',()=>{ a.value=b.value; label.textContent=fmt(+b.value); draw(); });
 }
-sync(els.R,els.Rnum,els.Rval);
-sync(els.C,els.Cnum,els.Cval);
-sync(els.F,els.Fnum,els.Fval);
-sync(els.T,els.Tnum,els.Tval);
+sync(els.R, els.Rnum, els.Rval);
+sync(els.C, els.Cnum, els.Cval);
+sync(els.F, els.Fnum, els.Fval);
+sync(els.T, els.Tnum, els.Tval);
 
 let rememberedV0 = null;
 
-els.reset.addEventListener('click',()=>{ rememberedV0=null; draw(); });
-els.showInput.addEventListener('change',draw);
+// Waveform selector event listener
+els.waveform.addEventListener('change', () => {
+  const waveformNames = {
+    'square': 'Square',
+    'sine': 'Sine', 
+    'triangle': 'Triangle',
+    'sawtooth': 'Sawtooth'
+  };
+  els.waveformDisplay.textContent = waveformNames[els.waveform.value] || 'Square';
+  draw();
+});
+
+els.reset.addEventListener('click', () => { 
+  rememberedV0 = null; 
+  draw(); 
+});
+
+els.showInput.addEventListener('change', draw);
 
 const layout = {
   margin:{l:50,r:20,t:10,b:40},
@@ -112,14 +382,36 @@ const layout = {
 };
 
 function draw(){
-  const R=+els.R.value, C=+els.C.value, f=+els.F.value, T=+els.T.value;
-  const {t,u,v} = simulate(R,C,f,T, rememberedV0);
-  rememberedV0 = v[0];
+  const R = +els.R.value;
+  const C = +els.C.value; 
+  const f = +els.F.value;
+  const T = +els.T.value;
+  const waveformType = els.waveform.value;
+  
+  const {t, u, v} = simulate(R, C, f, T, waveformType, rememberedV0);
+  rememberedV0 = v[v.length - 1]; // Remember the last value for continuity
+  
   const traces = [
-    {x:t,y:v,mode:'lines',name:'Output v(t)'},
+    {
+      x: t, 
+      y: v, 
+      mode: 'lines', 
+      name: 'Output v(t)',
+      line: {color: '#667eea', width: 3}
+    }
   ];
-  if(els.showInput.checked) traces.unshift({x:t,y:u,mode:'lines',name:'Input U(t)'});
-  Plotly.react('plot', traces, layout, {responsive:true, displayModeBar:false});
+  
+  if(els.showInput.checked) {
+    traces.unshift({
+      x: t, 
+      y: u, 
+      mode: 'lines', 
+      name: `Input U(t) - ${els.waveformDisplay.textContent}`,
+      line: {color: '#f5576c', width: 2, dash: 'dot'}
+    });
+  }
+  
+  Plotly.react('plot', traces, layout, {responsive: true, displayModeBar: false});
 }
 
 draw();
