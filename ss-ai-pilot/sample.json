@@ -1,0 +1,24 @@
+{
+  "run_id": "lab-20251010-01",
+  "predictions": [
+    {
+      "problem_id": "SS-EN-00123",
+      "answer": "3.14 N",
+      "reasoning": "Applied F = m a with m=1.00 kg, a=3.14 m/s^2; unit-checked.",
+      "units": "N",
+      "latency_ms": 215.7
+    },
+    {
+      "problem_id": "SS-RU-00456",
+      "answer": "E = m c^2",
+      "reasoning": "Derived from mass–energy equivalence; symbolic final form.",
+      "latency_ms": 412.2
+    },
+    {
+      "problem_id": "SS-EN-00999",
+      "answer": "The series diverges by comparison to harmonic; key lemma: a_n ≥ 1/n.",
+      "reasoning": "Outlined claim→lemma→conclusion; proof-style item.",
+      "latency_ms": 780.0
+    }
+  ]
+}

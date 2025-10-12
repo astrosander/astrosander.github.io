@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>SavchenkoSolutions × AI Pilot — Open Physics Benchmark (4-Week)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Open, education-only physics benchmark: 5k RU/EN problems, batch API, scoring, error taxonomy. 4-week pilot for research labs. No NDA, no proprietary data/code." />
+  <style>
+    :root{
+      --fg:#0f172a; --muted:#64748b; --line:#cbd5e1; --brand:#0ea5e9; --bg:#f0f4f8; --chip:#ffffff;
+      --glass-bg:rgba(255,255,255,0.65); --glass-border:rgba(255,255,255,0.8); --glass-shadow:rgba(0,0,0,0.08);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Inter,Roboto,Helvetica,Arial,sans-serif;
+      color:var(--fg);
+      background:#e8eef5;
+      line-height:1.55;
+      min-height:100vh;
+    }
+    .wrap{max-width:980px;margin:0 auto;padding:28px 18px 72px}
+    h1{font-size:clamp(28px,3.6vw,40px);margin:0 0 8px;text-shadow:0 2px 8px rgba(0,0,0,0.1)}
+    h2{font-size:clamp(20px,2.6vw,26px);margin:22px 0 10px}
+    h3{font-size:clamp(16px,2.2vw,20px);margin:18px 0 8px}
+    p,li{font-size:16px}
+    .muted{color:var(--muted)}
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 14px}
+    .chip{
+      border:1px solid var(--glass-border);
+      background:var(--chip);
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+      border-radius:999px;
+      padding:6px 10px;
+      font-size:13px;
+      box-shadow:0 2px 8px var(--glass-shadow);
+    }
+    .cta{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0 4px}
+    .cta a{
+      display:inline-block;
+      text-decoration:none;
+      border:1px solid rgba(255,255,255,0.9);
+      color:var(--brand);
+      background:rgba(255,255,255,0.75);
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+      padding:9px 12px;
+      border-radius:10px;
+      font-weight:600;
+      box-shadow:0 4px 12px rgba(0,0,0,0.1);
+      transition:all 0.3s ease;
+    }
+    .cta a:hover{
+      background:rgba(255,255,255,0.95);
+      box-shadow:0 6px 16px rgba(0,0,0,0.15);
+    }
+    header{
+      background:var(--glass-bg);
+      backdrop-filter:blur(20px);
+      -webkit-backdrop-filter:blur(20px);
+      border:1px solid var(--glass-border);
+      border-radius:20px;
+      padding:24px;
+      margin-bottom:32px;
+      box-shadow:0 8px 32px rgba(0,0,0,0.1);
+    }
+    section{margin-bottom:32px}
+    .grid{display:grid;grid-template-columns:1fr;gap:20px;margin-top:0}
+    @media (min-width:880px){.grid{grid-template-columns:1.1fr .9fr}}
+    .card{
+      border:1px solid var(--glass-border);
+      border-radius:20px;
+      padding:24px;
+      background:var(--glass-bg);
+      backdrop-filter:blur(20px);
+      -webkit-backdrop-filter:blur(20px);
+      box-shadow:0 8px 32px rgba(0,0,0,0.1);
+      transition:all 0.3s ease;
+    }
+    .card:hover{
+      box-shadow:0 12px 40px rgba(0,0,0,0.15);
+    }
+    .kbd{
+      font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+      background:rgba(241,245,249,0.8);
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+      border-radius:6px;
+      padding:2px 6px;
+      border:1px solid rgba(226,232,240,0.8);
+    }
+    .code{
+      background:rgba(248,250,252,0.85);
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+      border:1px solid var(--glass-border);
+      border-radius:12px;
+      padding:14px;
+      overflow:auto;
+      font-family:ui-monospace,Menlo,Consolas,monospace;
+      font-size:14px;
+      box-shadow:inset 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .two{display:grid;grid-template-columns:1fr;gap:18px}
+    @media (min-width:720px){.two{grid-template-columns:1fr 1fr}}
+    ul.tight>li{margin-bottom:6px}
+    footer{
+      margin-top:48px;
+      padding-top:20px;
+      background:var(--glass-bg);
+      backdrop-filter:blur(20px);
+      -webkit-backdrop-filter:blur(20px);
+      border:1px solid var(--glass-border);
+      border-radius:20px;
+      padding:20px 24px;
+      box-shadow:0 8px 32px rgba(0,0,0,0.1);
+    }
+    small{color:var(--muted)}
+    .ok{color:#15803d;font-weight:600}
+    .warn{color:#b45309;font-weight:600}
+    .no{color:#b91c1c;font-weight:600}
+    a{color:var(--brand);transition:opacity 0.2s ease}
+    a:hover{opacity:0.8}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <h1>SavchenkoSolutions × AI Pilot</h1>
+      <p class="muted">Open, education-only physics benchmark for LLMs/solvers — 4-week pilot with scoring, error taxonomy, and public, aggregate results.</p>
+      <div class="chips">
+        <span class="chip">~5,000 problems (RU/EN)</span>
+        <span class="chip">Batch API (JSON)</span>
+        <span class="chip">Unit-tested scoring</span>
+        <span class="chip">Error taxonomy</span>
+        <span class="chip">No NDA · Non-exclusive</span>
+        <span class="chip">Education-only</span>
+      </div>
+      <div class="cta">
+        <a href="mailto:aliaksandr@melnichenka.com?subject=SS-AI%20Pilot%20Intro%20Call&body=Hi%20Alex%2C%20we%27d%20like%20to%20schedule%20a%2030-min%20intro%20call%20about%20the%20pilot.%20Our%20lab%20is%3A%20____%20%2F%20Preferred%20times%3A%20____">Request 30-min intro call</a>
+        <a href="#dataset">Dataset card</a>
+        <a href="#api">API & scoring</a>
+        <a href="#timeline">4-week timeline</a>
+        <a href="#governance">Governance</a>
+      </div>
+    </header>
+
+    <section class="grid">
+      <div class="card">
+        <h2>Executive summary</h2>
+        <p><strong>Goal:</strong> evaluate physics-problem reasoning quality on a clean, license-clear subset of SavchenkoSolutions via a simple batch API. Labs run inference; we return metrics, an <em>error taxonomy</em>, and a short public note with <em>aggregate</em> results and baselines.</p>
+        <ul class="tight">
+          <li><strong>Scope:</strong> algebra, mechanics, thermodynamics, E&M, optics, modern physics; mixed numerical & proof-style prompts.</li>
+          <li><strong>Deliverables:</strong> accuracy, partial-credit score, reasoning-error breakdown, difficulty curves, latency stats (if provided).</li>
+          <li><strong>Public output:</strong> methods + aggregate chart; no system prompts, weights, or proprietary details disclosed.</li>
+        </ul>
+      </div>
+      <div class="card" id="contact">
+        <h2>Contact</h2>
+        <p><strong>Aliaksandr (Alex) Melnichenka</strong><br/>Berea College · Physics & Computer Science<br/>
+        <a href="mailto:aliaksandr@melnichenka.com">aliaksandr@melnichenka.com</a> · <a href="https://melnichenka.com" target="_blank" rel="noopener">melnichenka.com</a></p>
+        <p>Technical note: I maintain SavchenkoSolutions and co-lead research in MHD turbulence (with A. Lazarian & D. Pogosyan) and SIDM MC/Langevin methods (MIT Vogelsberger group).</p>
+      </div>
+    </section>
+
+    <section class="card" id="dataset">
+      <h2>Dataset card</h2>
+      <div class="two">
+        <div>
+          <h3>Composition</h3>
+          <ul class="tight">
+            <li><strong>Items:</strong> ~5,000 physics problems with structured fields (statement, hints, solution outline, final answer).</li>
+            <li><strong>Languages:</strong> RU/EN (parallel where available).</li>
+            <li><strong>Metadata:</strong> topic, difficulty, prerequisites, numeric vs. proof-style, units.</li>
+            <li><strong>Licensing:</strong> <span class="ok">education/research use</span> under SS terms; redistribution of <em>raw</em> data prohibited.</li>
+          </ul>
+          <p><a href="dataset_card.pdf" target="_blank" rel="noopener">Full dataset card (PDF)</a> · <a href="schemas.pdf" target="_blank" rel="noopener">Schemas</a> · <a href="sample.json" target="_blank" rel="noopener">Sample JSON</a></p>
+        </div>
+        <div>
+          <h3>Quality & bias checks</h3>
+          <ul class="tight">
+            <li>Deduplication & leakage guard (train/val/test split suggestions).</li>
+            <li>Units & dimension checks for numeric problems.</li>
+            <li>Language parity spot-checks on RU/EN items.</li>
+            <li>Topic balance and difficulty calibration.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid" id="api">
+      <div class="card">
+        <h2>Submission & API</h2>
+        <p><strong>Option A (preferred):</strong> upload predictions JSON to a signed URL.</p>
+        <div class="code">POST REPLACE_UPLOAD_ENDPOINT
+Authorization: Bearer REPLACE_API_KEY
+Content-Type: application/json
+
+{
+  "run_id": "lab-YYYYMMDD-01",
+  "predictions": [
+    {"problem_id":"SS-EN-00123","answer":"3.14 N","reasoning":"..."},
+    {"problem_id":"SS-RU-00456","answer":"E = mc^2","reasoning":"..."}
+  ]
+}</div>
+        <p><strong>Option B:</strong> request a batch <span class="kbd">/problems?split=test&limit=K</span>, return predictions within 72h.</p>
+        <p class="muted">Rate limit: 60 req/min. Keys are per-team and revocable. No scraping; we can enable a separate <em>crawlable</em> sandbox on request.</p>
+      </div>
+      <div class="card">
+        <h2>Scoring</h2>
+        <ul class="tight">
+          <li><strong>Numeric:</strong> tolerance window + units check + sig-fig sanity.</li>
+          <li><strong>Symbolic:</strong> canonicalization with SymPy where viable; exact match otherwise.</li>
+          <li><strong>Proof-style:</strong> rubric-based heuristic (claims/lemmas present, key step coverage) + spot human audit on a sample.</li>
+          <li><strong>Partial credit:</strong> (+1) correct final; (+0.5) correct method w/ algebra slip; (+0.2) correct setup only.</li>
+        </ul>
+        <p><a href="scoring_doc.pdf" target="_blank" rel="noopener">Scoring spec</a> · <a href="baselines.pdf" target="_blank" rel="noopener">Baselines</a></p>
+      </div>
+    </section>
+
+    <section class="card" id="deliverables">
+      <h2>What your lab receives</h2>
+      <ul class="tight">
+        <li>Overall accuracy and partial-credit score with confidence intervals.</li>
+        <li><strong>Error taxonomy</strong> (units/dimensions, algebra, physical model, boundary conditions, misread, hallucination).</li>
+        <li>Topic × difficulty curves; RU vs EN contrast; numeric vs proof breakdown.</li>
+        <li>Optional latency summary (if provided).</li>
+        <li>Short <strong>public, aggregate</strong> report (lab-approved) + citation text.</li>
+      </ul>
+      <p class="muted">We do <em>not</em> publish your prompts, weights, or per-item outputs; only aggregate metrics/breakdowns.</p>
+    </section>
+
+    <section class="grid" id="timeline">
+      <div class="card">
+        <h2>Timeline (4 weeks)</h2>
+        <ol>
+          <li><strong>Week 0:</strong> keys + docs; choose split/size; validate sample.</li>
+          <li><strong>Week 1:</strong> first batch submitted; initial metrics in 72h.</li>
+          <li><strong>Week 2–3:</strong> one iteration focusing on top error modes.</li>
+          <li><strong>Week 4:</strong> public aggregate note + optional letter.</li>
+        </ol>
+      </div>
+      <div class="card" id="governance">
+        <h2>Governance & compliance</h2>
+        <ul class="tight">
+          <li><span class="ok">Allowed:</span> education/research evaluation; non-exclusive; public, aggregate results.</li>
+          <li><span class="warn">Requires approval:</span> using our name/logo in marketing; quoting non-aggregate results.</li>
+          <li><span class="no">Not allowed:</span> NDA; proprietary data/code exchange; redistribution of raw items.</li>
+        </ul>
+        <p class="muted">This structure avoids export-control/IP issues and keeps the pilot squarely in open education. If your compliance office needs a memo, we can provide one.</p>
+      </div>
+    </section>
+
+    <section class="card" id="faq">
+      <h2>FAQ</h2>
+      <h3>Can we cite/announce participation?</h3>
+      <p>Yes—after we agree on wording. Typical: “We evaluated our model on an open, education-only physics benchmark maintained by SavchenkoSolutions.”</p>
+      <h3>Do you need our prompts or internals?</h3>
+      <p>No. We only need final predictions (and optional latencies) for the test set.</p>
+      <h3>Will our per-item mistakes be public?</h3>
+      <p>No. Only anonymized, aggregate error breakdowns are public.</p>
+      <h3>What about RU/EN balance?</h3>
+      <p>You can choose EN-only, RU-only, or mixed; we’ll report language-specific metrics if desired.</p>
+    </section>
+
+    <section class="card" id="about">
+      <h2>About SavchenkoSolutions</h2>
+      <p>Community-maintained archive of worked physics problems (1,600+ detailed solutions; learners across 40+ countries). This pilot leverages a license-clear subset for education/research evaluation only.</p>
+      <p><a href="https://savchenkosolutions.com" target="_blank" rel="noopener">savchenkosolutions.com</a></p>
+    </section>
+
+    <footer>
+      <small>© <span id="y"></span> SavchenkoSolutions · Page maintainer: Aliaksandr Melnichenka · Version: <code>v0.1</code> · Updated: <code>12 Oct 2025</code></small>
+    </footer>
+  </main>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>
