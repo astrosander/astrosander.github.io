@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Recovering 3D Magnetic Turbulence from a Single Polarization Map | Aliaksandr Melnichenka</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Observer-ready estimator for magnetic turbulence using one polarization map at one wavelength. Results, figures, code, and talk video." />
+  <link rel="preconnect" href="https://www.youtube.com">
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial,sans-serif;line-height:1.5;color:#0f172a;margin:0;background:#fff;}
+    .wrap{max-width:960px;margin:0 auto;padding:28px 20px 80px;}
+    h1{font-size:clamp(26px,3.6vw,38px);margin:6px 0 10px}
+    h2{font-size:clamp(18px,2.4vw,24px);margin:28px 0 10px}
+    h3{font-size:clamp(16px,2vw,20px);margin:22px 0 8px}
+    p,li{font-size:16px}
+    .muted{color:#475569}
+    .hero{display:grid;gap:14px;margin:14px 0 22px}
+    .pill{display:inline-block;font-size:13px;padding:6px 10px;border:1px solid #e2e8f0;border-radius:999px;background:#f8fafc;margin-right:6px}
+    .cta{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0 4px}
+    .cta a{border:1px solid #0ea5e9;color:#0ea5e9;text-decoration:none;padding:8px 12px;border-radius:10px;font-weight:600}
+    .cta a:hover{background:#e0f2fe}
+    .card{border:1px solid #e2e8f0;border-radius:14px;padding:14px 16px;background:#ffffff;margin-bottom:20px}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    @media (min-width:880px){.grid{grid-template-columns:1.1fr .9fr}}
+    .fig{border:1px solid #e2e8f0;border-radius:12px;padding:10px;background:#fafafa}
+    .small{font-size:14px;color:#64748b}
+    code{background:#f1f5f9;padding:2px 6px;border-radius:6px}
+    footer{margin-top:40px;border-top:1px solid #e2e8f0;padding-top:16px}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+
+    <!-- Header -->
+    <header class="hero">
+      <div>
+        <h1>Recovering 3D Magnetic Turbulence from a Single Polarization Map</h1>
+        <p class="muted">An observer-ready statistic that recovers inertial-range slopes and cleanly separates emission- vs. Faraday-screen structure using one map at one wavelength.</p>
+        <div>
+          <span class="pill">Aliaksandr (Alex) Melnichenka · Berea College</span>
+          <span class="pill">Physics &amp; CS · minor in Math</span>
+          <span class="pill">Focus: MHD turbulence · astro/plasma computation</span>
+        </div>
+        <div class="cta">
+          <a href="https://www.youtube.com/watch?v=AiC85nf9JSw" target="_blank">Watch the UK SPS talk (10 min)</a>
+          <a href="preprint.pdf" target="_blank">Preprint (arXiv)</a>
+          <a href="UK_SPS_slides.pdf" target="_blank">Slides (PDF)</a>
+          <a href="https://github.com/astrosander/AstroTurbulence" target="_blank">Code &amp; reproducible figures</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Video -->
+    <section class="card">
+      <h2>Talk recording (University of Kentucky SPS · Oct&nbsp;9,&nbsp;2025)</h2>
+      <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;border:1px solid #e2e8f0;">
+        <iframe src="https://www.youtube.com/embed/AiC85nf9JSw" title="UK SPS Talk — Single-Frequency Faraday-Screen Tomography" frameborder="0" allowfullscreen
+          style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+      </div>
+      <p class="small">If the embed doesn’t load, <a href="https://www.youtube.com/watch?v=AiC85nf9JSw" target="_blank">open on YouTube</a>.</p>
+    </section>
+
+    <!-- Results + Method -->
+    <section class="grid">
+      <div class="card">
+        <h2>What’s new</h2>
+        <ul>
+          <li><strong>Directional correlation of polarization angle</strong> (operate on <em>cos&nbsp;2χ</em>, <em>sin&nbsp;2χ</em>) recovers turbulence slopes from a single band and avoids angle unwrapping; robust to interferometric high-pass filtering.</li>
+          <li><strong>Crossover criterion</strong> (set by λ² and RM dispersion) tells you when spectra trace synchrotron angles vs. screen fluctuations (n<sub>e</sub>B<sub>∥</sub>).</li>
+          <li><strong>Validation</strong> on synthetic Faraday screens and <em>Athena</em> MHD cubes spanning sub- and super-Alfvénic regimes; measured slopes match ground-truth spectra across seeds.</li>
+          <li><strong>Observer recipe</strong>: measure slopes, locate crossover, apply immediately to LOFAR/MeerKAT/VLA archives; groundwork for SKA when spectral coverage is sparse.</li>
+        </ul>
+        <h3>Takeaway for observers</h3>
+        <p>With one map at one wavelength, you can already estimate inertial-range slopes and separate emission vs. screen structure—no RM synthesis required.</p>
+      </div>
+
+      <div class="card">
+        <h2>Reproducibility</h2>
+        <ol>
+          <li>Clone repo: <code>git clone https://github.com/astrosander/AstroTurbulence.git</code></li>
+          <li>Create env &amp; run: <code>bash reproduce.sh</code></li>
+          <li>Figures regenerate from tag <code>1.0.0</code> (commit <code>8731234</code>).</li>
+        </ol>
+        <p class="small">Includes synthetic samples, parameter file, and a minimal notebook to apply the estimator to your map.</p>
+        <h3>Artifacts</h3>
+        <ul>
+          <li><a href="Figure_gallery.ipynb" target="_blank">Figure gallery</a> (PNG/SVG)</li>
+          <li><a href="preprint.pdf" target="_blank">Methods note (2–3 pages)</a></li>
+          <li><a href="https://github.com/astrosander/AstroTurbulence" target="_blank">Synthetic data sample</a> (small)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Representative figure & caption -->
+    <section class="fig" aria-label="Representative result">
+      <img src="directional_spectrum.png" alt="Directional spectrum recovering inertial-range slope; crossover marked where λ²·σ_RM ~ 1" style="width:100%;height:auto;border-radius:8px;" />
+      <p class="small"><strong>Figure:</strong> Directional spectrum from a single-band polarization map. At shorter λ the slope follows the synchrotron angle field; at longer λ it follows screen fluctuations. The data-driven crossover agrees with predicted scaling.</p>
+    </section>
+
+    <!-- Publication status & collaborators -->
+    <section class="grid">
+      <div class="card">
+        <h2>Publication status</h2>
+        <ul>
+          <li><strong>Working title:</strong> Recovering 3D Magnetic Turbulence from Single-Frequency Faraday Screens</li>
+          <li><strong>Authors:</strong> A. Melnichenka (first author), A. Lazarian, D. Pogosyan</li>
+          <li><strong>Status:</strong> manuscript in preparation; preprint targeted before AAS (Jan 2026).</li>
+        </ul>
+        <!-- <p><a href="preprint.pdf" target="_blank">Preprint link</a> (add when live) · <a href="REPLACE_BIBTEX" target="_blank">BibTeX</a></p> -->
+      </div>
+      <div class="card">
+        <h2>Talks &amp; media</h2>
+        <ul>
+          <li><strong>UK SPS Invited Talk</strong> (Oct 9, 2025) — video above</li>
+          <li><strong>APS DPP 2025</strong> (Virtual session) — contributed oral, Nov 19, 2025</li>
+          <li><strong>AAS #247</strong> (Jan 4–8, 2026) — abstract planned</li>
+          <li><strong>Lazarian Conference</strong> (Nov 2–7, 2025) — related turbulence work</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Alignment with MIT -->
+    <!-- <section class="card">
+      <h2>For MIT: what I’d build in year 1</h2>
+      <ul>
+        <li><strong>Deploy the estimator on archival maps</strong> (LOFAR/MeerKAT/VLA) with MKI collaborators; release a vetted catalog of slopes + crossover scales.</li>
+        <li><strong>Integrate with simulation pipelines</strong> (e.g., <em>Athena</em>) to stress-test sub-/super-Alfvénic regimes and publish comparison plots as a living benchmark.</li>
+        <li><strong>Release an observer package</strong> (Python, pip) with one-click figure regeneration and unit-tested statistics.</li>
+      </ul>
+      <p class="small">Current mentors/collaborators on related work: Alex Lazarian (UW–Madison), Dmitri Pogosyan (U. Alberta). Prior summer work at MIT: Vogelsberger group (SIDM drift/diffusion via Monte-Carlo/Langevin).</p>
+    </section> -->
+
+    <!-- About & contact -->
+    <section class="grid">
+      <div class="card">
+        <h2>About the author</h2>
+        <p>Belarusian student at Berea College (KY), double major in Physics &amp; Computer Science; national Physics Olympiad medalist and Presidential Award laureate. Research threads: MHD turbulence diagnostics; self-interacting dark matter (local MC/Langevin); electron-fluid instabilities.</p>
+      </div>
+      <div class="card">
+        <h2>Verification &amp; links</h2>
+        <ul>
+          <li><a href="https://melnichenka.com/research" target="_blank">Scholar/ADS</a> · <a href="https://orcid.org/0009-0004-1969-779X" target="_blank">ORCID</a></li>
+          <li><a href="https://github.com/astrosander/AstroTurbulence" target="_blank">GitHub</a> · <a href="mailto:aliaksandr@melnichenka.com">aliaksandr@melnichenka.com</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <footer class="muted small">
+      © <span id="y"></span> Aliaksandr Melnichenka · Last updated: <code>2025-10-09</code>.
+    </footer>
+  </main>
+  <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+</body>
+</html>
