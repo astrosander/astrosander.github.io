@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://astrosander.github.io/al-folio/sitemap.xml
+Sitemap: https://melnichenka.com/al-folio/sitemap.xml
