@@ -4,74 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Falling Slinky: Signal Propagation</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:wght@400;700&display=swap">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;700&display=swap');
         body {
-            font-family: Arial, sans-serif;
-            max-width: 1200px;
+            font-family: 'Crimson Text', 'STIX Two Text', 'Latin Modern Roman', 'Computer Modern', 'Times New Roman', serif;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
-            line-height: 1.6;
         }
-        h1 {
-            color: #333;
-            border-bottom: 3px solid #4CAF50;
-            padding-bottom: 10px;
-        }
-        h2 {
-            color: #555;
-            margin-top: 30px;
-        }
-        ul {
-            margin: 15px 0;
-            padding-left: 30px;
-        }
-        li {
-            margin: 8px 0;
-        }
-        .video-container {
-            margin: 30px 0;
+        h1, h2, h3 {
             text-align: center;
-        }
-        .video-container iframe {
-            max-width: 100%;
-            height: auto;
-            aspect-ratio: 16 / 9;
-            width: 100%;
-            max-width: 800px;
         }
         .image-container {
-            margin: 20px 0;
             text-align: center;
         }
-        .image-container img {
-            max-width: 100%;
-            height: auto;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        .video-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .video-container iframe {
+            width: 100%;
+            max-width: 900px;
+            height: 506px;
+        }
+        a {
+            color: #0066cc;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+        .file-link {
+            color: #cc6600;
+            text-decoration: underline;
+            font-weight: bold;
+            padding: 2px 4px;
         }
         .pdf-link {
             display: inline-block;
-            margin: 20px 0;
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
+            color: #ffffff;
+            background-color: #0066cc;
             text-decoration: none;
+            padding: 10px 20px;
+            border: 2px solid #004499;
             border-radius: 5px;
             font-weight: bold;
+            margin: 10px 0;
         }
         .pdf-link:hover {
-            background-color: #45a049;
-        }
-        .file-link {
-            color: #4CAF50;
+            background-color: #004499;
+            border-color: #003366;
             text-decoration: none;
-        }
-        .file-link:hover {
-            text-decoration: underline;
-        }
-        section {
-            margin: 30px 0;
         }
     </style>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
@@ -122,17 +104,17 @@
 
         <div class="image-container">
             <h3>Summary of datasets and fits</h3>
-            <img src="experimental_data.png" alt="Summary plots: tracks, fits, uncertainties">
+            <img src="experimental_data.png" alt="Summary plots: tracks, fits, uncertainties" width="600">
         </div>
 
         <div class="image-container">
             <h3>Top and bottom positions vs time (sample run)</h3>
-            <img src="slinky_position_vs_time.png" alt="Tracked top/bottom positions over time">
+            <img src="slinky_position_vs_time.png" alt="Tracked top/bottom positions over time" width="600">
         </div>
 
         <div class="image-container">
             <h3>Mass-spring chain simulation</h3>
-            <img src="output.gif" alt="Simulation frames of compression front">
+            <img src="output.gif" alt="Simulation frames of compression front" width="600">
         </div>
     </section>
 
@@ -143,7 +125,8 @@
             <li>Axial wave speed \(c \approx \sqrt{k/\mu}\)</li>
             <li>CM falls near \(g\); slope of \(t_{\text{stall}}\) vs \(L\) is \(\approx 1/c\)</li>
         </ul>
-        <a href="theory.pdf" class="pdf-link" target="_blank">Theory & Derivations (PDF)</a>
+        <center> 
+        <a href="theory.pdf" class="pdf-link" target="_blank"><b>Theory & Derivations (PDF)</b></a> </center>
     </section>
 
     <section>
