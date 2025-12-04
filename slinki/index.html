@@ -1,1 +1,167 @@
-slinki page
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Falling Slinky: Signal Propagation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #333;
+            border-bottom: 3px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #555;
+            margin-top: 30px;
+        }
+        ul {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .video-container {
+            margin: 30px 0;
+            text-align: center;
+        }
+        .video-container iframe {
+            max-width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+            width: 100%;
+            max-width: 800px;
+        }
+        .image-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .pdf-link {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .pdf-link:hover {
+            background-color: #45a049;
+        }
+        .file-link {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        .file-link:hover {
+            text-decoration: underline;
+        }
+        section {
+            margin: 30px 0;
+        }
+    </style>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            }
+        };
+    </script>
+</head>
+<body>
+    <h1>Falling Slinky: Signal Propagation</h1>
+
+    <section>
+        <h2>Overview & Goals</h2>
+        <ul>
+            <li>Experiment on falling Slinky dynamics</li>
+            <li>Top/bottom position vs time</li>
+            <li>Bottom-mass boundary test</li>
+            <li>Figures and space-time plots</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Project Video</h2>
+        <p>Project video for Classical Mechanics: falling Slinky with fire release.</p>
+        <div class="video-container">
+            <iframe 
+                src="https://www.youtube.com/embed/ZKiulQN8YjA" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
+        <p>If the embedded player doesn't load, watch on <b><a href="https://www.youtube.com/watch?v=ZKiulQN8YjA" target="_blank">YouTube</a></b>.</p>
+    </section>
+
+    <section>
+        <h2>Data & Figures</h2>
+        <ul>
+            <li>Mass measurements (two setups) (<a href="mass_a.txt" class="file-link">mass_a.txt</a>, <a href="mass_b.txt" class="file-link">mass_b.txt</a>)</li>
+            <li>Tracking and processing pipeline</li>
+            <li>Plots of tracks, fits, and space-time diagram</li>
+        </ul>
+
+        <div class="image-container">
+            <h3>Summary of datasets and fits</h3>
+            <img src="experimental_data.png" alt="Summary plots: tracks, fits, uncertainties">
+        </div>
+
+        <div class="image-container">
+            <h3>Top and bottom positions vs time (sample run)</h3>
+            <img src="slinky_position_vs_time.png" alt="Tracked top/bottom positions over time">
+        </div>
+
+        <div class="image-container">
+            <h3>Mass-spring chain simulation</h3>
+            <img src="output.gif" alt="Simulation frames of compression front">
+        </div>
+    </section>
+
+    <section>
+        <h2>Theory (one-page summary)</h2>
+        <ul>
+            <li>Finite-speed tension signal (\(t_{\text{stall}} = L/c\))</li>
+            <li>Axial wave speed \(c \approx \sqrt{k/\mu}\)</li>
+            <li>CM falls near \(g\); slope of \(t_{\text{stall}}\) vs \(L\) is \(\approx 1/c\)</li>
+        </ul>
+        <a href="theory.pdf" class="pdf-link" target="_blank">Theory & Derivations (PDF)</a>
+    </section>
+
+    <section>
+        <h2>Data & Code</h2>
+        <ul>
+            <li>Mass A data: <a href="mass_a.txt" class="file-link">mass_a.txt</a></li>
+            <li>Mass B data: <a href="mass_b.txt" class="file-link">mass_b.txt</a></li>
+            <li>Python scripts for data processing: <a href="read_data.py" class="file-link">read_data.py</a>, <a href="lol.py" class="file-link">lol.py</a></li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Results at a Glance</h2>
+        <ul>
+            <li>Tracked motion matches expected collapse</li>
+            <li>Bottom-mass variant shifts the pause slightly</li>
+            <li>\(t_{\text{stall}} \propto L\) with slope \(\approx 1/c\); simulation agrees within error</li>
+        </ul>
+    </section>
+</body>
+</html>
