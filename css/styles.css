@@ -329,6 +329,19 @@ video {
 	border-radius: 1.5rem
 }
 
+.rounded-full {
+	border-radius: 9999px
+}
+
+.object-cover {
+	object-fit: cover;
+	object-position: center
+}
+
+.w-40 {
+	width: 10rem
+}
+
 .border-b-2 {
 	border-bottom-width: 2px
 }
@@ -1138,6 +1151,10 @@ body {
 }
 
 @media(min-width:768px) {
+	.md\:w-full {
+		width: 100%
+	}
+
 	.md\:p-4 {
 		padding: 1rem
 	}
