@@ -1336,3 +1336,19 @@ body {
     stroke:#b3b3b3;
     }
 }
+
+.link-btn {
+    display: inline-block;
+    padding: 0.25rem 0.7rem;
+    border: 1.5px solid #d1d5db;
+    border-radius: 0.25rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: #374151;
+    transition: border-color 0.15s ease, color 0.15s ease, background-color 0.15s ease;
+}
+.link-btn:hover {
+    border-color: rgba(59, 130, 246, 1);
+    color: rgba(59, 130, 246, 1);
+    background-color: rgba(59, 130, 246, 0.04);
+}
