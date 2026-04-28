@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BUSEL-1 — Stratospheric Balloon Mission</title>
+    <meta name="description" content="BUSEL-1: A high-altitude balloon carrying the first student-built calibrated polarimeter to the stratosphere. Launch from Berea, Kentucky, May 3 2026.">
+    <meta property="og:title" content="BUSEL-1 — Stratospheric Balloon Mission">
+    <meta property="og:description" content="First student-built calibrated polarimeter to the stratosphere. 11 instruments, 28 km altitude, live LoRa telemetry.">
+    <meta property="og:image" content="https://melnichenka.com/stratosphere/img/busel-1-stork.jpg">
+    <meta property="og:url" content="https://melnichenka.com/stratosphere/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="../img/favicon.ico">
+    <link rel="apple-touch-icon" href="../img/favicon.ico">
+    <script src="../js/script.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Charter, 'Source Serif Pro', 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
+            color: #1a1a1a;
+            background: #000;
+            line-height: 1.75;
+            font-size: 18px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* === HERO === */
+
+        .hero {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #000;
+            color: #fff;
+            text-align: center;
+            padding: 2rem;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 50% 80%, rgba(30,30,60,0.5) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-back {
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            z-index: 2;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            font-size: 0.82rem;
+            color: #888;
+            text-decoration: none;
+            border: 1px solid #333;
+            padding: 0.4rem 1rem;
+            border-radius: 4px;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .hero-back:hover {
+            border-color: #666;
+            color: #ccc;
+        }
+
+        .hero-logo {
+            width: 120px;
+            height: auto;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 0.3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero .tagline {
+            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            font-size: 1rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: #aaa;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .countdown {
+            display: flex;
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .countdown-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .countdown-num {
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: 0.05em;
+            min-width: 2ch;
+        }
+
+        .countdown-label {
+            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #888;
+            margin-top: 0.5rem;
+        }
+
+        .hero-meta {
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            font-size: 0.78rem;
+            color: #666;
+            position: relative;
+            z-index: 1;
+            line-height: 2;
+        }
+
+        .hero-meta .label {
+            color: #999;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .status-badge.pre-launch {
+            background: rgba(245, 158, 11, 0.15);
+            color: #F59E0B;
+            border: 1px solid rgba(245, 158, 11, 0.4);
+        }
+
+        .status-badge.post-launch {
+            background: rgba(16, 185, 129, 0.15);
+            color: #10B981;
+            border: 1px solid rgba(16, 185, 129, 0.4);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #444;
+            font-size: 1.5rem;
+            animation: bounce 2s infinite;
+            z-index: 1;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+
+        /* === CONTENT === */
+
+        .content-area {
+            background: #fff;
+        }
+
+        .section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2.5rem;
+        }
+
+        .section-dark {
+            background: #0a0a0a;
+            color: #e5e5e5;
+        }
+
+        .section-dark h2 {
+            color: #fff;
+        }
+
+        .section-dark a {
+            color: #f87171;
+        }
+
+        .section-dark td {
+            border-bottom-color: #222;
+        }
+
+        .section-dark th {
+            border-bottom-color: #fff;
+            color: #ccc;
+        }
+
+        h2 {
+            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            margin-bottom: 1.2rem;
+        }
+
+        h3 {
+            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 0.6rem;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+        }
+
+        a {
+            color: #7F1D1D;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+        }
+
+        a:hover {
+            border-bottom-color: currentColor;
+        }
+
+        .mono {
+            font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', 'Consolas', monospace;
+            font-size: 0.9em;
+        }
+
+        sup {
+            font-size: 0.7em;
+            vertical-align: super;
+            line-height: 0;
+        }
+
+        sup a {
+            color: #7F1D1D;
+            border-bottom: none;
+            font-weight: 600;
+        }
+
+        .section-dark sup a {
+            color: #f87171;
+        }
+
+        ul, ol {
+            margin-bottom: 1.2rem;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* === TABLE WITH ICONS === */
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        th {
+            text-align: left;
+            font-weight: 700;
+            padding: 0.55rem 0.75rem;
+            border-bottom: 2px solid #1a1a1a;
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        td {
+            padding: 0.55rem 0.75rem;
+            border-bottom: 1px solid #eee;
+            vertical-align: middle;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .icon-cell {
+            width: 36px;
+            padding-right: 0;
+        }
+
+        .icon-cell img {
+            width: 26px;
+            height: 26px;
+            object-fit: contain;
+            display: block;
+            opacity: 0.85;
+        }
+
+        /* === IMAGES === */
+
+        .full-img {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            display: block;
+            padding: 0 2.5rem;
+        }
+
+        .full-img img,
+        .full-img video {
+            width: 100%;
+            display: block;
+            border-radius: 4px;
+        }
+
+        .full-img figcaption {
+            font-size: 0.88rem;
+            color: #666;
+            margin-top: 0.6rem;
+            line-height: 1.55;
+        }
+
+        .full-img.dark-caption figcaption {
+            color: #888;
+        }
+
+        .full-img.mb {
+            margin-bottom: 2rem;
+        }
+
+        .full-width-img {
+            width: 100%;
+            display: block;
+        }
+
+        .two-up {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 2.5rem;
+        }
+
+        .two-up figure {
+            margin: 0;
+        }
+
+        .two-up img {
+            width: 100%;
+            display: block;
+            border-radius: 4px;
+        }
+
+        .two-up figcaption {
+            font-size: 0.88rem;
+            color: #666;
+            margin-top: 0.5rem;
+            line-height: 1.55;
+        }
+
+        .two-up.dark-caption figcaption {
+            color: #888;
+        }
+
+        /* === CODE BLOCK === */
+
+        .code-block {
+            background: #f6f8fa;
+            border: 1px solid #e5e5e5;
+            border-radius: 4px;
+            padding: 1rem 1.25rem;
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            margin-bottom: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .section-dark .code-block {
+            background: #161616;
+            border-color: #333;
+        }
+
+        /* === REFERENCES === */
+
+        .references li {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 0.7rem;
+        }
+
+        /* === FOOTER === */
+
+        footer {
+            background: #000;
+            color: #666;
+            padding: 2.5rem 2.5rem 3rem;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: #888;
+        }
+
+        footer a:hover {
+            color: #ccc;
+        }
+
+        @media (max-width: 700px) {
+            body {
+                font-size: 16.5px;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+                letter-spacing: 0.1em;
+            }
+
+            .hero .tagline {
+                font-size: 0.8rem;
+            }
+
+            .hero-back {
+                top: 1rem;
+                left: 1rem;
+                font-size: 0.75rem;
+                padding: 0.35rem 0.8rem;
+            }
+
+            .countdown {
+                gap: 1.5rem;
+            }
+
+            .countdown-num {
+                font-size: 2.2rem;
+            }
+
+            .section, .full-img, .two-up {
+                padding-left: 1.25rem;
+                padding-right: 1.25rem;
+            }
+
+            .section {
+                padding-top: 2rem;
+                padding-bottom: 2rem;
+            }
+
+            h2 {
+                font-size: 1.35rem;
+            }
+
+            .two-up {
+                grid-template-columns: 1fr;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+
+            td, th {
+                padding: 0.4rem 0.5rem;
+            }
+
+            .icon-cell {
+                width: 30px;
+            }
+
+            .icon-cell img {
+                width: 22px;
+                height: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ======================== HERO ======================== -->
+
+    <section class="hero">
+        <a href="https://melnichenka.com" class="hero-back">&larr; melnichenka.com</a>
+
+        <img src="img/logo.png" alt="BUSEL-1 mission logo" class="hero-logo">
+        <div class="status-badge pre-launch">Pre-Launch</div>
+        <h1>BUSEL-1</h1>
+        <p class="tagline">Stratospheric Science Mission</p>
+
+        <div class="countdown" id="countdown">
+            <div class="countdown-unit">
+                <span class="countdown-num" id="cd-days">--</span>
+                <span class="countdown-label">Days</span>
+            </div>
+            <div class="countdown-unit">
+                <span class="countdown-num" id="cd-hours">--</span>
+                <span class="countdown-label">Hours</span>
+            </div>
+            <div class="countdown-unit">
+                <span class="countdown-num" id="cd-min">--</span>
+                <span class="countdown-label">Minutes</span>
+            </div>
+            <div class="countdown-unit">
+                <span class="countdown-num" id="cd-sec">--</span>
+                <span class="countdown-label">Seconds</span>
+            </div>
+        </div>
+
+        <div class="hero-meta">
+            <span class="label">Launch</span> Sunday, May 3, 2026 at 08:00 AM EDT<br>
+            <span class="label">Site</span> Berea, Kentucky <span class="mono">37.57&deg;N, 84.30&deg;W</span><br>
+            <span class="label">Target</span> 28,000 m altitude, 11 instruments, live telemetry
+        </div>
+
+        <div class="scroll-indicator">&darr;</div>
+    </section>
+
+    <script>
+        (function () {
+            var target = new Date('2026-05-03T12:00:00Z').getTime();
+            function tick() {
+                var now = Date.now();
+                var diff = target - now;
+                if (diff <= 0) {
+                    document.getElementById('cd-days').textContent = '00';
+                    document.getElementById('cd-hours').textContent = '00';
+                    document.getElementById('cd-min').textContent = '00';
+                    document.getElementById('cd-sec').textContent = '00';
+                    return;
+                }
+                var d = Math.floor(diff / 86400000);
+                var h = Math.floor((diff % 86400000) / 3600000);
+                var m = Math.floor((diff % 3600000) / 60000);
+                var s = Math.floor((diff % 60000) / 1000);
+                document.getElementById('cd-days').textContent = d < 10 ? '0' + d : d;
+                document.getElementById('cd-hours').textContent = h < 10 ? '0' + h : h;
+                document.getElementById('cd-min').textContent = m < 10 ? '0' + m : m;
+                document.getElementById('cd-sec').textContent = s < 10 ? '0' + s : s;
+                requestAnimationFrame(tick);
+            }
+            tick();
+        })();
+    </script>
+
+    <!-- ======================== CONTENT ======================== -->
+
+    <div class="content-area">
+
+        <!-- === ROADMAP PITCH === -->
+
+        <div class="section-dark">
+            <div class="section" style="text-align: center;">
+                <h2>Three stages. One program.</h2>
+                <p style="color: #aaa; max-width: 640px; margin: 0 auto 1.5rem;">
+                    BUSEL is a student-led space science program that begins in the stratosphere and aims for interplanetary space. Every mission builds on the hardware and data from the one before it.
+                </p>
+            </div>
+            <img src="img/busel-roadmap.jpg" alt="BUSEL program roadmap: three stages from stratospheric balloon to CubeSat to deep-space probe" class="full-width-img" loading="lazy">
+        </div>
+
+        <!-- === THE IDEA === -->
+
+        <div class="section">
+            <h2>The idea</h2>
+            <p>
+                Earlier this year I submitted a paper in The Astrophysical Journal<sup><a href="#ref-1">[1]</a></sup> developing a statistical framework for recovering three-dimensional magnetic turbulence properties from projected polarization maps. The math works on any system where polarized light encodes information about the medium it passed through. The atmosphere is one such system: sunlight scatters off air molecules, becoming linearly polarized by the same Rayleigh process that makes the sky blue. At ground level, the degree of polarization reaches about 70%. At 28 km, where most of the atmosphere is below you, the polarization should approach the single-scattering Rayleigh limit of 94%<sup><a href="#ref-2">[2]</a></sup>.
+            </p>
+            <p>
+                No student or amateur balloon has ever measured this transition with research-grade polarimetric optics<sup><a href="#ref-3">[3]</a></sup>. Satellite polarimeters like HARP CubeSat<sup><a href="#ref-4">[4]</a></sup> observe from orbit, and lidar systems probe from the ground, but the altitude-resolved profile from surface to stratosphere has not been captured from a balloon platform with calibrated optics. This is the exact regime where the math in my paper applies most directly. So I decided to build one.
+            </p>
+        </div>
+
+        <!-- === THE HARDWARE === -->
+
+        <div class="section">
+            <h2>The hardware</h2>
+            <p>
+                The payload started as a pile of sensors on a lab bench. Every component was tested individually, then wired to the flight computer one at a time, checking for I2C address conflicts and power draw at each step. Ten I2C devices on one bus, no conflicts.
+            </p>
+        </div>
+
+        <figure class="full-img mb">
+            <img src="img/hardware-bench.jpg" alt="Full electronics inventory laid out on a lab bench: Arduino Mega, Feather M0, sensors, batteries, cables, and wiring spread across the table">
+            <figcaption>The full electronics inventory before integration. Every sensor was tested individually and confirmed working before being wired to the flight computer.</figcaption>
+        </figure>
+
+        <div class="section">
+            <p>
+                The core science instrument is a polarizing beamsplitter cube with dual silicon photodetectors and an astronomical filter, measuring the degree of linear polarization of scattered skylight as a function of altitude. A nine-axis IMU records payload orientation at each measurement so that in post-processing I can reconstruct the sky-referenced polarization angle, compensating for the 1 to 10 RPM spin on the tether. This is the same attitude-reconstruction approach used on satellite polarimeters<sup><a href="#ref-4">[4]</a></sup>.
+            </p>
+            <p>
+                But polarimetry is only one of the experiments. The full instrument manifest:
+            </p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th class="icon-cell"></th>
+                        <th>Instrument</th>
+                        <th>What it measures</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="icon-cell"><img src="img/icons/Optical_Prism.png" alt=""></td>
+                        <td>Polarimeter</td>
+                        <td>Degree of linear polarization vs. altitude</td>
+                    </tr>
+                    <tr>
+                        <td class="icon-cell"><img src="img/icons/atom.svg" alt=""></td>
+                        <td>Geiger counter</td>
+                        <td>Cosmic ray flux profile, Pfotzer maximum at ~18 km<sup><a href="#ref-5">[5]</a></sup></td>
+                    </tr>
+                    <tr>
+                        <td class="icon-cell"><img src="img/icons/Spectrometer.svg" alt=""></td>
+                        <td>11-channel spectrometer</td>
+                        <td>Ozone via Chappuis-band absorption<sup><a href="#ref-6">[6]</a></sup></td>
+                    </tr>
+                    <tr>
+                        <td class="icon-cell"><img src="img/icons/Sun of May.svg" alt=""></td>
+                        <td>UV radiometer</td>
+                        <td>UVA and UVC irradiance (ozone confirmation)</td>
+                    </tr>
+                    <tr>
+                        <td class="icon-cell"><img src="img/icons/pocket_barometer.png" alt=""></td>
+                        <td>High-rate barometer</td>
+                        <td>Pressure at 50 to 100 Hz for turbulence structure functions<sup><a href="#ref-7">[7]</a></sup></td>
+                    </tr>
+                    <tr>
+                        <td class="icon-cell"><img src="img/icons/thermometer.png" alt=""></td>
+                        <td>Thermocouple</td>
+                        <td>External temperature to &minus;200&thinsp;&deg;C</td>
+                    </tr>
+                    <tr>
+                        <td class="icon-cell"><img src="img/icons/Compass_card.svg" alt=""></td>
+                        <td>9-axis IMU</td>
+                        <td>Attitude reconstruction for polarimetry</td>
+                    </tr>
+                    <tr>
+                        <td class="icon-cell"><img src="img/icons/Color-palette-dynamic-gradient.png" alt=""></td>
+                        <td>RGB colorimeter</td>
+                        <td>Sky color vs. altitude</td>
+                    </tr>
+                    <tr>
+                        <td class="icon-cell"><img src="img/icons/Microphone_-_The_Noun_Project.svg" alt=""></td>
+                        <td>Microphone</td>
+                        <td>Acoustic environment and balloon burst timing</td>
+                    </tr>
+                    <tr>
+                        <td class="icon-cell"><img src="img/icons/Conical_flask_orange.svg" alt=""></td>
+                        <td>Ozone photometer</td>
+                        <td>Narrowband ozone absorption channel</td>
+                    </tr>
+                    <tr>
+                        <td class="icon-cell"><img src="img/icons/camera.jpg" alt=""></td>
+                        <td>13 MP camera</td>
+                        <td>Imagery every 10 seconds</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>
+                Four boards run the show. The Arduino Mega handles all 17 sensor channels and logs to SD. A Feather M0 with LoRa transmits GPS position over a custom <span class="mono">915 MHz</span> telemetry link. A Raspberry Pi 2 takes 13 MP photos every 10 seconds. An Arduino Nano with its own battery pack acts as a backup logger. If the Mega crashes, I still get pressure and temperature.
+            </p>
+            <p>
+                Total mass: <span class="mono">~788 g</span> in a cut-down styrofoam cooler (budget: <span class="mono">1200 g</span>). The entire payload was built for under $500.
+            </p>
+        </div>
+
+        <!-- === THE TELEMETRY === -->
+
+        <div class="section-dark">
+            <div class="section">
+                <h2>The telemetry link</h2>
+                <p>
+                    Getting data back from 28 km is the second hardest problem after building the instruments. The payload transmits on <span class="mono">915 MHz</span> LoRa at spreading factor SF12, which trades bandwidth for range. The transmitter antenna is an inverted quarter-wave ground plane: four copper radials at 45&deg; with the radiator pointing straight down through the bottom of the cooler, so the radiation pattern favors the ground.
+                </p>
+            </div>
+
+            <div class="two-up dark-caption">
+                <figure>
+                    <img src="img/prototype-antenna.jpg" alt="Feather M0 with LoRa module and hand-built quarter-wave ground-plane antenna made from copper wire and drinking straw supports">
+                    <figcaption>Feather M0 with LoRa and the ground-plane antenna. Four 80 mm copper radials provide the ground plane. The radiator wire points downward during flight.</figcaption>
+                </figure>
+                <figure>
+                    <img src="img/range-test-map-web.jpg" alt="Satellite map showing a 2.81 km LoRa range test path through hilly terrain">
+                    <figcaption>Ground range test: <span class="mono">2.81 km</span> through hilly terrain at SF7 with bare wire antennas. With all improvements, expected range from 28 km exceeds 200 km.</figcaption>
+                </figure>
+            </div>
+
+            <div class="section">
+                <p>
+                    On the ground, I built a 7-element Yagi from a wooden dowel and copper wire. The combined improvement from SF12, the transmitter ground plane, and the Yagi totals about 35 dB over baseline. At altitude with line-of-sight, the link budget predicts over 200 km of range, more than enough for the 135 km predicted ground track.
+                </p>
+            </div>
+        </div>
+
+        <!-- === THE PAYLOAD === -->
+
+        <div class="section">
+            <h2>The payload</h2>
+            <p>
+                Everything lives inside a cut-down styrofoam cooler. The polarimeter and ozone sensors view the sky through windows in the lid, sealed with clear packing tape. Two cameras look out the sides: the 13 MP camera aimed at the stork mascot with Earth's curvature behind it, and a 480p backup camera capturing the opposite direction. A thermocouple dangles 30 cm below the cooler to measure true air temperature. The UV sensor is mounted on top of the lid for direct sun exposure. Heating pads on the floor, controlled by a MOSFET thermostat, keep the batteries alive at &minus;56&deg;C.
+            </p>
+        </div>
+
+        <figure class="full-img mb">
+            <img src="img/payload-box.jpg" alt="Sealed styrofoam payload enclosure with sensor windows cut into the lid and camera ports on the sides">
+            <figcaption>The sealed payload. Seven holes: two sky-facing windows for optics, two side ports for cameras, one bottom hole for the LoRa antenna, and two for external sensor wires.</figcaption>
+        </figure>
+
+        <!-- === THE STORK === -->
+
+        <div class="section">
+            <h2>The stork</h2>
+            <p>
+                The mission is named BUSEL-1. <em>Busiel</em> is the Belarusian word for stork, the national bird of Belarus. A 3D-printed white stork rides on a boom extending from the side of the cooler, positioned so the 13 MP camera frames it in the center-right of the image with Earth's curvature and the black stratospheric sky behind it.
+            </p>
+        </div>
+
+        <figure class="full-img mb">
+            <img src="img/busel-1-stork.jpg" alt="3D-printed white stork figurine, the BUSEL-1 mascot, ready to be attached to the payload">
+            <figcaption>BUSEL-1. At 28 km, the sky behind it will be black and Earth's curvature will be visible.</figcaption>
+        </figure>
+
+        <!-- === THE TEST FLIGHT === -->
+
+        <div class="section">
+            <h2>The test flight</h2>
+            <p>
+                Before committing to a full launch, the payload was suspended from a small tethered balloon to verify antenna radiation pattern, camera framing, and sensor telemetry. The test confirmed the LoRa link and camera angles. It also showed the payload spins at about 3 RPM on the tether, slow enough for the IMU-based attitude correction to work.
+            </p>
+        </div>
+
+        <figure class="full-img mb">
+            <video src="img/balloon-test.mp4" autoplay loop muted playsinline></video>
+            <figcaption>Tethered test flight. The payload swings and spins on the tether, simulating the dynamics the attitude-correction algorithm will handle in flight.</figcaption>
+        </figure>
+
+        <!-- === SCIENCE OBJECTIVES === -->
+
+        <div class="section-dark">
+            <div class="section">
+                <h2>Science objectives</h2>
+                <ol>
+                    <li><strong>Polarimetric altitude profile</strong>. Measure degree of linear polarization from surface (~70%) toward the single-scattering Rayleigh limit (~94%)<sup><a href="#ref-2">[2]</a></sup> as optical depth decreases with altitude, with payload attitude reconstructed from a coflying 9-axis IMU. No student balloon has flown calibrated polarimetric optics to profile this transition<sup><a href="#ref-3">[3]</a></sup>, and the measurement directly extends the statistical framework in Melnichenka et al. (2026)<sup><a href="#ref-1">[1]</a></sup>.</li>
+                    <li><strong>Cosmic ray flux</strong>. Record count rate vs. altitude with a Geiger-M&uuml;ller tube and sealed calibration source for continuous in-flight gain verification, a technique standard in orbital radiation detectors<sup><a href="#ref-8">[8]</a></sup> but never implemented on a student balloon. The Pfotzer maximum should appear near <span class="mono">18 km</span><sup><a href="#ref-5">[5]</a></sup>.</li>
+                    <li><strong>Ozone layer</strong>. Detected two independent ways: Chappuis-band spectrophotometry<sup><a href="#ref-6">[6]</a></sup> with an 11-channel spectral sensor and direct UVC measurement. The ozone concentration peak sits near <span class="mono">22 to 25 km</span>.</li>
+                    <li><strong>Atmospheric turbulence</strong>. Barometric pressure sampled at <span class="mono">50 to 100 Hz</span> to compute structure functions along the ascent trajectory<sup><a href="#ref-7">[7]</a></sup>, connecting to the atmospheric cascade theory underlying the ApJ paper<sup><a href="#ref-1">[1]</a></sup>.</li>
+                    <li><strong>Full atmospheric profile</strong>. Temperature (thermocouple rated to &minus;200&thinsp;&deg;C), pressure, humidity, UV flux, acoustic environment, and sky color from ground to stratosphere and back, including the tropopause crossing and balloon burst event with millisecond timing.</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- === FLIGHT PREDICTIONS === -->
+
+        <div class="section">
+            <h2>Flight predictions</h2>
+            <p>
+                168-hour prediction window computed for the launch site. Each trajectory uses the same flight profile, ascending at <span class="mono">5.0 m/s</span> to burst at <span class="mono">28,000 m</span> and descending at <span class="mono">7.0 m/s</span>, but drifts on different upper-atmosphere winds depending on launch hour. Predicted landing distances range from <span class="mono">111.5</span> to <span class="mono">193.0 km</span> with a mean of <span class="mono">152.9 km</span>, primarily across eastern Kentucky and western Virginia.
+            </p>
+        </div>
+
+        <figure class="full-img mb">
+            <img src="img/balloon_predictions_map.jpg" alt="Map showing 168 predicted balloon flight paths from Berea, Kentucky, fanning east across Kentucky and Virginia. Solid lines show ascent, dashed lines show descent. Colors encode launch time from blue (April 28) to red (May 5). Landing zones cluster in Floyd, Pike, Martin, Lawrence, Knott, and Letcher Counties in Kentucky and Dickenson and Buchanan Counties in Virginia.">
+            <figcaption>168 hourly flight predictions from Berea, KY (gold star) over April 28 to May 5, 2026. Solid lines trace ascent to burst (orange diamonds). Dashed lines trace descent to landing (colored circles). The turbo colormap encodes launch time from blue (earliest) to red (latest), showing how shifting winds rotate the predicted landing zone across eastern Kentucky.</figcaption>
+        </figure>
+
+        <!-- === LAUNCH PLAN === -->
+
+        <div class="section-dark">
+            <div class="section">
+                <h2>Launch plan</h2>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="icon-cell"></th>
+                            <th>Parameter</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="icon-cell"><img src="img/icons/clock.png" alt=""></td>
+                            <td>Launch</td>
+                            <td><span class="mono">May 3, 2026</span> at 08:00 AM EDT</td>
+                        </tr>
+                        <tr>
+                            <td class="icon-cell"><img src="img/icons/Pixel_map_pin_with_dot_Pinhead_icon.svg" alt=""></td>
+                            <td>Site</td>
+                            <td>Berea, KY <span class="mono">37.57&deg;N, 84.30&deg;W</span> (310 m)</td>
+                        </tr>
+                        <tr>
+                            <td class="icon-cell"><img src="img/icons/balloon.png" alt=""></td>
+                            <td>Balloon</td>
+                            <td>800 g Totex</td>
+                        </tr>
+                        <tr>
+                            <td class="icon-cell"><img src="img/icons/arrow-up-from-line.svg" alt=""></td>
+                            <td>Burst altitude</td>
+                            <td><span class="mono">28,000 m</span></td>
+                        </tr>
+                        <tr>
+                            <td class="icon-cell"><img src="img/icons/styrofoam cooler payload.png" alt=""></td>
+                            <td>Ascent, descent</td>
+                            <td><span class="mono">5.0 m/s</span> up, <span class="mono">7.0 m/s</span> down</td>
+                        </tr>
+                        <tr>
+                            <td class="icon-cell"><img src="img/icons/Car_-_The_Noun_Project.svg" alt=""></td>
+                            <td>Predicted landing</td>
+                            <td>Floyd County, KY (~<span class="mono">135 km</span> east)</td>
+                        </tr>
+                        <tr>
+                            <td class="icon-cell"><img src="img/icons/SPOT-Gen3.png" alt=""></td>
+                            <td>Recovery</td>
+                            <td>SPOT Gen3 satellite tracker and AirTag backup</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Readiness</h3>
+                <ul>
+                    <li>All sensors tested and confirmed on I2C bus</li>
+                    <li>LoRa range test passed: <span class="mono">2.81 km</span> at SF7</li>
+                    <li>Ground-plane antenna built and soldered</li>
+                    <li>SD card logging verified</li>
+                    <li>Cameras tested (13 MP and backup)</li>
+                    <li>SPOT Gen3 satellite tracker registered and active</li>
+                    <li>FAA notification filed</li>
+                    <li>Recovery plan: drive east along predicted ground track</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- === POST-LAUNCH BLOCK (uncomment after recovery) ===
+        <div class="section">
+            <h2>Flight results</h2>
+            <p>Launch: [DATE and TIME]. Burst altitude: [ALT]. Landing: [LOCATION]. Recovery: [STATUS].</p>
+            <h3>Polarization profile</h3>
+            <p>[Plot or description]</p>
+            <h3>Cosmic ray profile</h3>
+            <p>[Plot or description]</p>
+            <h3>Temperature profile</h3>
+            <p>[Plot]</p>
+            <h3>Ozone detection</h3>
+            <p>[AS7341 and LTR-390 data]</p>
+            <h3>Imagery</h3>
+            <p>[Selected 13 MP photos]</p>
+        </div>
+        -->
+
+        <!-- === CODE & DATA === -->
+
+        <div class="section">
+            <h2>Code and data</h2>
+            <p>
+                Flight software, sensor libraries, telemetry protocol, and post-flight analysis:
+            </p>
+            <div class="code-block">
+                <a href="https://github.com/astrosander/stratosphere">github.com/astrosander/stratosphere</a>
+            </div>
+        </div>
+
+        <!-- === LOOKING AHEAD === -->
+
+        <div class="section-dark">
+            <div class="section">
+                <h2>Looking ahead</h2>
+                <p>
+                    BUSEL-1 is the first step in a three-stage program designed to push student-built science instruments from the upper atmosphere to interplanetary space.
+                </p>
+            </div>
+            <img src="img/busel-roadmap.jpg" alt="BUSEL program roadmap: three stages from stratospheric balloon to CubeSat to deep-space probe" class="full-width-img" loading="lazy">
+            <div class="section">
+                <h3>Stage 1. BUSEL-I: Stratosphere</h3>
+                <p>
+                    A high-altitude weather balloon carries 11 instruments to 28 km, validating hardware, telemetry, and recovery procedures in near-space conditions. This is the current mission, scheduled for May 3, 2026.
+                </p>
+                <h3>Stage 2. BUSEL-II: Near-Earth orbit</h3>
+                <p>
+                    A CubeSat platform inherits the proven sensor suite from BUSEL-I and adds orbital capabilities: solar panels, attitude control, and a UHF downlink. The goal is long-duration polarimetric and radiation mapping from low Earth orbit.
+                </p>
+                <h3>Stage 3. BUSEL-III: Beyond the Solar System</h3>
+                <p>
+                    A deep-space probe designed to explore trans-Neptunian objects and the outer boundary of the solar system. BUSEL-III would carry next-generation instruments informed by data from both earlier missions.
+                </p>
+            </div>
+        </div>
+
+        <!-- === REFERENCES === -->
+
+        <div class="section-dark">
+            <div class="section">
+                <h2>References</h2>
+                <ol class="references">
+                    <li id="ref-1">A. Melnichenka, A. Lazarian, D. Pogosyan, "Recovering 3D Magnetic Turbulence from Single-Frequency Faraday Screens," <em>The Astrophysical Journal</em>, 2026. <a href="https://arxiv.org/abs/2602.22204">arXiv:2602.22204</a></li>
+                    <li id="ref-2">S. Chandrasekhar, <em>Radiative Transfer</em>, Dover Publications, 1960. Chapter on Rayleigh scattering and the theoretical maximum polarization degree for single scattering.</li>
+                    <li id="ref-3">L. Wiencke and D. Rosen, "High-altitude balloon polarimetry: a review of amateur and student platforms," <em>Journal of Atmospheric and Solar-Terrestrial Physics</em>, vol. 198, 2020. Survey of HAB science payloads; no calibrated polarimetric instruments identified on student platforms.</li>
+                    <li id="ref-4">J. V. Martins et al., "HARP CubeSat: A Multi-Angle Polarimeter for Aerosol and Cloud Characterization," <em>Journal of Quantitative Spectroscopy and Radiative Transfer</em>, vol. 273, 2021. Describes the attitude-reconstruction pipeline for orbital polarimetry that BUSEL-1 adapts to a balloon platform.</li>
+                    <li id="ref-5">G. Pfotzer, "Dreifachkoinzidenzen der Ultrastrahlung aus vertikaler Richtung in der Stratosph&auml;re," <em>Zeitschrift f&uuml;r Physik</em>, vol. 102, pp. 23 to 58, 1936. Original observation of the cosmic ray intensity maximum at ~18 km.</li>
+                    <li id="ref-6">J. Chappuis, "Sur le spectre d'absorption de l'ozone," <em>Comptes Rendus</em>, vol. 91, pp. 884 to 886, 1880. Identification of the visible-wavelength ozone absorption bands used for spectrophotometric detection.</li>
+                    <li id="ref-7">A. N. Kolmogorov, "The local structure of turbulence in incompressible viscous fluid for very large Reynolds numbers," <em>Doklady Akademii Nauk SSSR</em>, vol. 30, pp. 299 to 303, 1941. Foundation for the structure function analysis applied to balloon pressure data.</li>
+                    <li id="ref-8">D. M. Sawyer and J. I. Vette, "AP-8 Trapped Proton Environment for Solar Maximum and Solar Minimum," NASA Technical Report NSSDC 76-06, 1976. Standard practice of co-flying calibration sources with radiation detectors on orbital platforms.</li>
+                </ol>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ======================== FOOTER ======================== -->
+
+    <footer>
+        <p>
+            BUSEL-1, Aliaksandr Melnichenka, <a href="mailto:aliaksandr@melnichenka.com">contact</a>
+        </p>
+        <p style="margin-top: 0.4rem;">
+            Last updated <span class="mono">April 28, 2026</span>
+        </p>
+    </footer>
+
+</body>
+</html>

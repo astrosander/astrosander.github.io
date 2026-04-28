@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-64 -64 128 128">
+  <defs>
+	<switch id="text-E">
+		<text id="text-E-af" systemLanguage="af">O</text>
+		<text id="text-E-ar" systemLanguage="ar,arz" style="direction:rtl;font-family:AlNile;font-size:10px;font-weight:normal">ق</text>
+		<text id="text-E-be" systemLanguage="be" style="font-family:DejaVuSans-Oblique">У</text>
+		<text id="text-E-bg" systemLanguage="bg" style="font-family:DejaVuSans-Oblique">И</text>
+		<text id="text-E-bs" systemLanguage="bs">I</text>
+		<text id="text-E-ca" systemLanguage="ca">E</text>
+		<text id="text-E-cs" systemLanguage="cs">V</text>
+		<text id="text-E-da" systemLanguage="da">Ø</text>
+		<text id="text-E-de" systemLanguage="de">O</text>
+		<text id="text-E-en" systemLanguage="en">E</text>
+		<text id="text-E-eo" systemLanguage="eo">Or</text>
+		<text id="text-E-es" systemLanguage="es">E</text>
+		<text id="text-E-eu" systemLanguage="eu">E</text>
+		<text id="text-E-fa" systemLanguage="fa" style="direction:rtl;font-family:AlNile;font-size:10px;font-weight:normal">شرق</text>
+		<text id="text-E-fr" systemLanguage="fr">E</text>
+		<text id="text-E-fur" systemLanguage="fur">E</text>
+		<text id="text-E-gl" systemLanguage="gl">L</text>
+		<text id="text-E-he" systemLanguage="he" style="direction:rtl;font-family:AlNile;font-size:10px;font-weight:normal">מזרח</text>
+		<text id="text-E-hr" systemLanguage="hr">I</text>
+		<text id="text-E-io" systemLanguage="io">E</text>
+		<text id="text-E-it" systemLanguage="it">E</text>
+		<text id="text-E-ja" systemLanguage="ja" style="font-family:AlNile;font-size:10px;font-weight:normal">東</text>
+		<text id="text-E-ko" systemLanguage="ko" style="font-family:AlNile;font-size:10px;font-weight:normal">동</text>
+		<text id="text-E-ku" systemLanguage="ku">Rh</text>
+		<text id="text-E-mk" systemLanguage="mk" style="font-family:DejaVuSans-Oblique">И</text>
+		<text id="text-E-mn" systemLanguage="mn">З</text>
+		<text id="text-E-nb" systemLanguage="nb">Ø</text>
+		<text id="text-E-nl" systemLanguage="nl">O</text>
+		<text id="text-E-no" systemLanguage="no">Ø</text>
+		<text id="text-E-pl" systemLanguage="pl">W</text>
+		<text id="text-E-pt" systemLanguage="pt">L</text>
+		<text id="text-E-ro" systemLanguage="ro">E</text>
+		<text id="text-E-ru" systemLanguage="ru" style="font-family:DejaVuSans-Oblique">В</text>
+		<text id="text-E-sk" systemLanguage="sk">V</text>
+		<text id="text-E-sl" systemLanguage="sl">V</text>
+		<text id="text-E-sr" systemLanguage="sr" style="font-family:DejaVuSans-Oblique">И</text>
+		<text id="text-E-sv" systemLanguage="sv">Ö</text>
+		<text id="text-E-tr" systemLanguage="tr">D</text>
+		<text id="text-E-uk" systemLanguage="uk" style="font-family:DejaVuSans-Oblique">Сх</text>
+		<text id="text-E-zh" systemLanguage="zh,zh-cn">東</text>
+		<text id="text-E-nolabel" systemLanguage="zz"/>
+		<text id="text-E-other">E</text>
+	</switch>
+	<switch id="text-N">
+		<text id="text-N-ar" systemLanguage="ar,arz" style="direction:rtl;font-family:AlNile;font-size:10px;font-weight:normal">ش</text>
+		<text id="text-N-be" systemLanguage="be" style="font-family:DejaVuSans-Oblique">П</text>
+		<text id="text-N-cs" systemLanguage="cs,sk,sl">S</text>
+		<text id="text-N-de" systemLanguage="de">N</text>
+		<text id="text-N-eo" systemLanguage="eo">No</text>
+		<text id="text-N-eu" systemLanguage="eu">I</text>
+		<text id="text-N-fa" systemLanguage="fa" style="direction:rtl;font-family:AlNile;font-size:10px;font-weight:normal">شمال</text>
+		<text id="text-N-he" systemLanguage="he" style="direction:rtl;font-family:AlNile;font-size:10px;font-weight:normal">צפון</text>
+		<text id="text-N-hr" systemLanguage="hr">S</text>
+		<text id="text-N-ja" systemLanguage="ja" style="font-family:AlNile;font-size:10px;font-weight:normal">北</text>
+		<text id="text-N-ko" systemLanguage="ko" style="font-family:AlNile;font-size:10px;font-weight:normal">북</text>
+		<text id="text-N-ku" systemLanguage="ku">Bk</text>
+		<text id="text-N-mn" systemLanguage="mn">Х</text>
+		<text id="text-N-pl" systemLanguage="pl">P</text>
+		<text id="text-N-ru" systemLanguage="bg,ru" style="font-family:DejaVuSans-Oblique">С</text>
+		<text id="text-N-sr" systemLanguage="mk,sr" style="font-family:DejaVuSans-Oblique">С</text>
+		<text id="text-N-tr" systemLanguage="tr">K</text>
+		<text id="text-N-uk" systemLanguage="uk" style="font-family:DejaVuSans-Oblique">Пн</text>
+		<text id="text-N-zh" systemLanguage="zh,zh-cn">北</text>
+		<text id="text-N-nolabel" systemLanguage="zz"/>
+		<text id="text-N-other">N</text>
+	</switch>
+	<switch id="text-S">
+		<text id="text-S-ar" systemLanguage="ar,arz" style="direction:rtl;font-family:AlNile;font-size:10px;font-weight:normal">ج</text>
+		<text id="text-S-be" systemLanguage="be" style="font-family:DejaVuSans-Oblique">Пд</text>
+		<text id="text-S-cs" systemLanguage="cs,sk,sl">J</text>
+		<text id="text-S-de" systemLanguage="de">S</text>
+		<text id="text-S-eo" systemLanguage="eo">Su</text>
+		<text id="text-S-eu" systemLanguage="eu">H</text>
+		<text id="text-S-fa" systemLanguage="fa" style="direction:rtl;font-family:AlNile;font-size:10px;font-weight:normal">جنوب</text>
+		<text id="text-S-he" systemLanguage="he" style="direction:rtl;font-family:AlNile;font-size:10px;font-weight:normal">דרום</text>
+		<text id="text-S-hr" systemLanguage="hr">J</text>
+		<text id="text-S-ja" systemLanguage="ja" style="font-family:AlNile;font-size:10px;font-weight:normal">南</text>
+		<text id="text-S-ko" systemLanguage="ko" style="font-family:AlNile;font-size:10px;font-weight:normal">남</text>
+		<text id="text-S-ku" systemLanguage="ku">Bş</text>
+		<text id="text-S-mn" systemLanguage="mn">Ө</text>
+		<text id="text-S-nl" systemLanguage="nl">Z</text>
+		<text id="text-S-pl" systemLanguage="pl">Pd</text>
+		<text id="text-S-ru" systemLanguage="bg,ru" style="font-family:DejaVuSans-Oblique">Ю</text>
+		<text id="text-S-sr" systemLanguage="mk,sr" style="font-family:DejaVuSans-Oblique">Ј</text>
+		<text id="text-S-tr" systemLanguage="tr">G</text>
+		<text id="text-S-uk" systemLanguage="uk" style="font-family:DejaVuSans-Oblique">Пд</text>
+		<text id="text-S-zh" systemLanguage="zh,zh-cn">南</text>
+		<text id="text-S-nolabel" systemLanguage="zz"/>
+		<text id="text-S-other">S</text>
+	</switch>
+	<switch id="text-W">
+		<text id="text-W-ar" systemLanguage="ar,arz" style="direction:rtl;font-family:AlNile;font-size:10px;font-weight:normal">غ</text>
+		<text id="text-W-cs" systemLanguage="cs,sk,sl">Z</text>
+		<text id="text-W-da" systemLanguage="da,nb,no,ro,sv">V</text>
+		<text id="text-W-de" systemLanguage="de">W</text>
+		<text id="text-W-es" systemLanguage="ca,es,fr,fur,gl,it,pt">O</text>
+		<text id="text-W-eo" systemLanguage="eo">Ok</text>
+		<text id="text-W-eu" systemLanguage="eu">M</text>
+		<text id="text-W-fa" systemLanguage="fa" style="direction:rtl;font-family:AlNile;font-size:10px;font-weight:normal">غرب</text>
+		<text id="text-W-he" systemLanguage="he" style="direction:rtl;font-family:AlNile;font-size:10px;font-weight:normal">מערב</text>
+		<text id="text-W-hr" systemLanguage="hr,pl">Z</text>
+		<text id="text-W-ja" systemLanguage="ja" style="font-family:AlNile;font-size:10px;font-weight:normal">西</text>
+		<text id="text-W-ko" systemLanguage="ko" style="font-family:AlNile;font-size:10px;font-weight:normal">서</text>
+		<text id="text-W-ku" systemLanguage="ku">Ra</text>
+		<text id="text-W-mn" systemLanguage="mn">Б</text>
+		<text id="text-W-ru" systemLanguage="be,bg,ru" style="font-family:DejaVuSans-Oblique">З</text>
+		<text id="text-W-sr" systemLanguage="mk,sr" style="font-family:DejaVuSans-Oblique">З</text>
+		<text id="text-W-tr" systemLanguage="tr">B</text>
+		<text id="text-W-uk" systemLanguage="uk" style="font-family:DejaVuSans-Oblique">Зх</text>
+		<text id="text-W-zh" systemLanguage="zh,zh-cn">西</text>
+		<text id="text-W-nolabel" systemLanguage="zz"/>
+		<text id="text-W-other">W</text>
+	</switch>
+	<switch id="text-NE">
+		<text id="text-NE-ar" systemLanguage="ar,arz" style="direction:rtl;font-family:AlNile;font-size:10px;font-weight:normal">شق</text>
+		<text id="text-NE-be" systemLanguage="be" style="font-family:DejaVuSans-Oblique">ПУ</text>
+		<text id="text-NE-cs" systemLanguage="cs,sk,sl">SV</text>
+		<text id="text-NE-da" systemLanguage="da,nb,no">NØ</text>
+		<text id="text-NE-de" systemLanguage="af,de,nl">NO</text>
+		<text id="text-NE-eo" systemLanguage="eo">NoOr</text>
+		<text id="text-NE-eu" systemLanguage="eu">IE</text>
+		<text id="text-NE-hr" systemLanguage="hr">SI</text>
+		<text id="text-NE-ja" systemLanguage="ja" style="font-family:AlNile;font-weight:normal">北東</text>
+		<text id="text-NE-ko" systemLanguage="ko" style="font-family:AlNile;font-weight:normal">북동</text>
+		<text id="text-NE-ku" systemLanguage="ku">BkRh</text>
+		<text id="text-NE-mn" systemLanguage="mn">ЗХ</text>
+		<text id="text-NE-pl" systemLanguage="pl">PW</text>
+		<text id="text-NE-pt" systemLanguage="gl,pt">NL</text>
+		<text id="text-NE-ru" systemLanguage="ru" style="font-family:DejaVuSans-Oblique">СВ</text>
+		<text id="text-NE-sr" systemLanguage="bg,mk,sr" style="font-family:DejaVuSans-Oblique">СИ</text>
+		<text id="text-NE-sv" systemLanguage="sv">NÖ</text>
+		<text id="text-NE-tr" systemLanguage="tr">KD</text>
+		<text id="text-NE-uk" systemLanguage="uk" style="font-family:DejaVuSans-Oblique">ПнСх</text>
+		<text id="text-NE-zh" systemLanguage="zh,zh-cn">東北</text>
+		<text id="text-NE-nolabel" systemLanguage="zz"/>
+		<text id="text-NE-other">NE</text>
+	</switch>
+	<switch id="text-SE">
+		<text id="text-SE-ar" systemLanguage="ar,arz" style="direction:rtl;font-family:AlNile;font-size:10px;font-weight:normal">جق</text>
+		<text id="text-SE-be" systemLanguage="be" style="font-family:DejaVuSans-Oblique">ПдУ</text>
+		<text id="text-SE-bg" systemLanguage="bg" style="font-family:DejaVuSans-Oblique">ЮИ</text>
+		<text id="text-SE-cs" systemLanguage="cs,sk,sl">JV</text>
+		<text id="text-SE-da" systemLanguage="da,nb,no">SØ</text>
+		<text id="text-SE-de" systemLanguage="af,de">SO</text>
+		<text id="text-SE-eo" systemLanguage="eo">SuOr</text>
+		<text id="text-SE-eu" systemLanguage="eu">HE</text>
+		<text id="text-SE-hr" systemLanguage="hr">JI</text>
+		<text id="text-SE-ja" systemLanguage="ja" style="font-family:AlNile;font-weight:normal">南東</text>
+		<text id="text-SE-ko" systemLanguage="ko" style="font-family:AlNile;font-weight:normal">남동</text>
+		<text id="text-SE-ku" systemLanguage="ku">BşRh</text>
+		<text id="text-SE-mn" systemLanguage="mn">ЗӨ</text>
+		<text id="text-SE-nl" systemLanguage="nl">ZO</text>
+		<text id="text-SE-pl" systemLanguage="pl">PdW</text>
+		<text id="text-SE-pt" systemLanguage="gl,pt">SL</text>
+		<text id="text-SE-ru" systemLanguage="ru" style="font-family:DejaVuSans-Oblique">ЮВ</text>
+		<text id="text-SE-sr" systemLanguage="mk,sr" style="font-family:DejaVuSans-Oblique">ЈИ</text>
+		<text id="text-SE-sv" systemLanguage="sv">SÖ</text>
+		<text id="text-SE-tr" systemLanguage="tr">GD</text>
+		<text id="text-SE-uk" systemLanguage="uk" style="font-family:DejaVuSans-Oblique">ПдСх</text>
+		<text id="text-SE-zh" systemLanguage="zh,zh-cn">東南</text>
+		<text id="text-SE-nolabel" systemLanguage="zz"/>
+		<text id="text-SE-other">SE</text>
+	</switch>
+	<switch id="text-SW">
+		<text id="text-SW-ar" systemLanguage="ar,arz" style="direction:rtl;font-family:AlNile;font-size:10px;font-weight:normal">جغ</text>
+		<text id="text-SW-be" systemLanguage="be" style="font-family:DejaVuSans-Oblique">ПдЗ</text>
+		<text id="text-SW-cs" systemLanguage="cs,sk,sl">JZ</text>
+		<text id="text-SW-da" systemLanguage="da,nb,no,ro,sv">SV</text>
+		<text id="text-SW-de" systemLanguage="de">SW</text>
+		<text id="text-SW-es" systemLanguage="ca,es,fr,fur,gl,it,pt">SO</text>
+		<text id="text-SW-eo" systemLanguage="eo">SuOk</text>
+		<text id="text-SW-eu" systemLanguage="eu">HM</text>
+		<text id="text-SW-hr" systemLanguage="hr">JZ</text>
+		<text id="text-SW-ja" systemLanguage="ja" style="font-family:AlNile;font-weight:normal">南西</text>
+		<text id="text-SW-ko" systemLanguage="ko" style="font-family:AlNile;font-weight:normal">남서</text>
+		<text id="text-SW-ku" systemLanguage="ku">BşRa</text>
+		<text id="text-SW-mn" systemLanguage="mn">БУ</text>
+		<text id="text-SW-nl" systemLanguage="nl">ZW</text>
+		<text id="text-SW-pl" systemLanguage="pl">PdZ</text>
+		<text id="text-SW-ru" systemLanguage="bg,ru" style="font-family:DejaVuSans-Oblique">ЮЗ</text>
+		<text id="text-SW-sr" systemLanguage="mk,sr" style="font-family:DejaVuSans-Oblique">ЈЗ</text>
+		<text id="text-SW-tr" systemLanguage="tr">GB</text>
+		<text id="text-SW-uk" systemLanguage="uk" style="font-family:DejaVuSans-Oblique">ПдЗх</text>
+		<text id="text-SW-zh" systemLanguage="zh,zh-cn">西南</text>
+		<text id="text-SW-nolabel" systemLanguage="zz"/>
+		<text id="text-SW-other">SW</text>
+	</switch>
+	<switch id="text-NW">
+		<text id="text-NW-ar" systemLanguage="ar,arz" style="direction:rtl;font-family:AlNile;font-size:10px;font-weight:normal">شغ</text>
+		<text id="text-NW-be" systemLanguage="be" style="font-family:DejaVuSans-Oblique">ПЗ</text>
+		<text id="text-NW-cs" systemLanguage="cs,sk,sl">SZ</text>
+		<text id="text-NW-da" systemLanguage="da,nb,no,ro,sv">NV</text>
+		<text id="text-NW-de" systemLanguage="de">NW</text>
+		<text id="text-NW-eo" systemLanguage="eo">NoOk</text>
+		<text id="text-NW-es" systemLanguage="ca,es,fr,fur,gl,it,pt">NO</text>
+		<text id="text-NW-eu" systemLanguage="eu">IM</text>
+		<text id="text-NW-hr" systemLanguage="hr">SZ</text>
+		<text id="text-NW-ja" systemLanguage="ja" style="font-family:AlNile;font-weight:normal">北西</text>
+		<text id="text-NW-ko" systemLanguage="ko" style="font-family:AlNile;font-weight:normal">북서</text>
+		<text id="text-NW-ku" systemLanguage="ku">BkRa</text>
+		<text id="text-NW-mn" systemLanguage="mn">БХ</text>
+		<text id="text-NW-pl" systemLanguage="pl">PZ</text>
+		<text id="text-NW-ru" systemLanguage="bg,ru" style="font-family:DejaVuSans-Oblique">СЗ</text>
+		<text id="text-NW-sr" systemLanguage="mk,sr" style="font-family:DejaVuSans-Oblique">СЗ</text>
+		<text id="text-NW-tr" systemLanguage="tr">KB</text>
+		<text id="text-NW-uk" systemLanguage="uk" style="font-family:DejaVuSans-Oblique">ПнЗх</text>
+		<text id="text-NW-zh" systemLanguage="zh,zh-cn">西北</text>
+		<text id="text-NW-nolabel" systemLanguage="zz"/>
+		<text id="text-NW-other">NW</text>
+	</switch>
+  </defs>
+	<g transform="translate(-62,-62.8)">
+		<g>
+			<g fill="#C5F2FB">
+				<polygon points="71.9995117,62.8291016 61.9995117,62.8291016 95.9399414,28.8876953 "/>
+				<polygon points="61.9995117,52.8291016 61.9995117,62.8291016 28.0581055,28.8886719 "/>
+				<polygon points="51.9995117,62.8291016 61.9995117,62.8291016 28.059082,96.7705078 "/>
+				<polygon points="61.9995117,72.8291016 61.9995117,62.8291016 95.940918,96.7695313 "/>
+			</g>
+			<g fill="#4291E4">
+				<polygon points="51.9995117,62.8291016 61.9995117,62.8291016 28.0585938,28.8876953 "/>
+				<polygon points="61.9995117,52.8291016 61.9995117,62.8291016 95.940918,28.8886719 "/>
+				<polygon points="71.9995117,62.8291016 61.9995117,62.8291016 95.9399414,96.7705078 "/>
+				<polygon points="61.9995117,72.8291016 61.9995117,62.8291016 28.0581055,96.7695313 "/>
+			</g>
+			<polygon fill="none" stroke="#000000" stroke-width="0.5" stroke-miterlimit="100" points="61.9995117,52.8291016      95.940918,28.8876953 71.9995117,62.8291016 95.940918,96.7705078 61.9995117,72.8291016 28.0585938,96.7705078      51.9995117,62.8291016 28.0585938,28.8876953 "/>
+		</g>
+		<g>
+			<g fill="#D4E5F7">
+				<polygon points="71.9995117,52.8291016 61.9995117,62.8291016 61.9995117,14.8291016 "/>
+				<polygon points="13.9995117,62.8291016 61.9995117,62.8291016 51.9995117,52.8291016 "/>
+				<polygon points="61.9995117,110.8291016 61.9995117,62.8291016 51.9995117,72.8291016 "/>
+				<polygon points="109.9995117,62.8291016 61.9995117,62.8291016 71.9995117,72.8291016 "/>
+			</g>
+			<g fill="#0D0BA9">
+				<polygon points="51.9995117,52.8291016 61.9995117,62.8291016 61.9995117,14.8291016 "/>
+				<polygon points="109.9995117,62.8291016 61.9995117,62.8291016 71.9995117,52.8291016 "/>
+				<polygon points="61.9995117,110.8291016 61.9995117,62.8291016 71.9995117,72.8291016 "/>
+				<polygon points="13.9995117,62.8291016 61.9995117,62.8291016 51.9995117,72.8291016 "/>
+			</g>
+			<polygon fill="none" stroke="#000000" stroke-width="0.5" points="71.9995117,52.8291016 109.9995117,62.8291016      71.9995117,72.8291016 61.9995117,110.8291016 51.9995117,72.8291016 14,62.8291016 51.9995117,52.8291016      61.9995117,14.8291016 "/>
+		</g>
+		<g style="fill:none;stroke:#000000;stroke-width:0.5px">
+			<polyline points="61.9995117,62.8291016 61.9995117,14.8291016 61.9995117,110.8291016 "/>
+			<line x1="109.9995117" y1="62.8291016" x2="14" y2="62.8291016"/>
+			<line x1="95.940918" y1="28.8876953" x2="28.0585938" y2="96.7705078"/>
+			<polyline points="61.9995117,62.8291016 28.0585938,28.8876953 95.940918,96.7705078 "/>
+		</g>
+	</g>
+	<g style="font-family:'MgOpen Canonica',serif;font-weight:bold;font-size:12px;text-anchor:middle">
+		<g>
+			<use xlink:href="#text-N" transform="translate(0,4)rotate(-90)translate(56,0)rotate(90)"/>
+			<switch>
+				<use xlink:href="#text-W" transform="translate(4,0)rotate(180)translate(56,0)rotate(90)" systemLanguage="fa,he"/>
+				<use xlink:href="#text-W" transform="translate(0,4)rotate(180)translate(56,0)rotate(180)"/>
+			</switch>
+			<use xlink:href="#text-S" transform="translate(0,4)rotate(90)translate(56,0)rotate(-90)"/>
+			<switch>
+				<use xlink:href="#text-E" transform="translate(-4,0)rotate(0)translate(56,0)rotate(90)" systemLanguage="fa,he"/>
+				<use xlink:href="#text-E" transform="translate(0,4)rotate(0)translate(56,0)rotate(0)"/>
+			</switch>
+	 	</g>
+		<g transform="translate(0,4)">
+			<use xlink:href="#text-NE" transform="rotate(-45)translate(60,0)rotate(45)"/>
+			<use xlink:href="#text-NW" transform="rotate(-135)translate(60,0)rotate(135)"/>
+			<use xlink:href="#text-SW" transform="rotate(135)translate(60,0)rotate(-135)"/>
+			<use xlink:href="#text-SE" transform="rotate(45)translate(60,0)rotate(-45)"/>
+	 	</g>
+	 </g>
+</svg>
