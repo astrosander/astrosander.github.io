@@ -35,7 +35,6 @@
         .hero {
             position: relative;
             width: 100%;
-            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -43,7 +42,7 @@
             background: #000;
             color: #fff;
             text-align: center;
-            padding: 2rem;
+            padding: 2.5rem 2rem 1rem;
             overflow: hidden;
         }
 
@@ -51,7 +50,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(ellipse at 50% 80%, rgba(30,30,60,0.5) 0%, transparent 70%);
+            background: radial-gradient(ellipse at 50% 80%, rgba(30,30,60,0.4) 0%, transparent 70%);
             pointer-events: none;
         }
 
@@ -78,40 +77,44 @@
             color: #ccc;
         }
 
-        .hero-logo {
-            width: 120px;
-            height: auto;
-            margin-bottom: 1rem;
+        .hero-title-row {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
             position: relative;
             z-index: 1;
+            margin-bottom: 0.2rem;
+        }
+
+        .hero-logo {
+            width: 64px;
+            height: auto;
         }
 
         .hero h1 {
             font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
-            font-size: 4.5rem;
+            font-size: 3.8rem;
             font-weight: 700;
             letter-spacing: 0.15em;
             text-transform: uppercase;
-            margin-bottom: 0.3rem;
-            position: relative;
-            z-index: 1;
+            margin: 0;
         }
 
         .hero .tagline {
             font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
-            font-size: 1rem;
+            font-size: 0.8rem;
             letter-spacing: 0.25em;
             text-transform: uppercase;
             color: #aaa;
-            margin-bottom: 3rem;
+            margin-bottom: 0.8rem;
             position: relative;
             z-index: 1;
         }
 
         .countdown {
             display: flex;
-            gap: 2.5rem;
-            margin-bottom: 2.5rem;
+            gap: 1.8rem;
+            margin-bottom: 0.8rem;
             position: relative;
             z-index: 1;
         }
@@ -124,7 +127,7 @@
 
         .countdown-num {
             font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
-            font-size: 3.5rem;
+            font-size: 2.2rem;
             font-weight: 700;
             line-height: 1;
             letter-spacing: 0.05em;
@@ -133,20 +136,20 @@
 
         .countdown-label {
             font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
             color: #888;
-            margin-top: 0.5rem;
+            margin-top: 0.3rem;
         }
 
         .hero-meta {
             font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
-            font-size: 0.78rem;
+            font-size: 0.7rem;
             color: #666;
             position: relative;
             z-index: 1;
-            line-height: 2;
+            line-height: 1.7;
         }
 
         .hero-meta .label {
@@ -155,16 +158,17 @@
 
         .status-badge {
             display: inline-block;
-            padding: 0.25rem 0.85rem;
+            padding: 0.15rem 0.6rem;
             border-radius: 9999px;
-            font-size: 0.72rem;
+            font-size: 0.6rem;
             font-weight: 700;
             letter-spacing: 0.06em;
             text-transform: uppercase;
             font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
-            margin-bottom: 2rem;
+            margin: 0;
             position: relative;
             z-index: 1;
+            vertical-align: middle;
         }
 
         .status-badge.pre-launch {
@@ -180,19 +184,7 @@
         }
 
         .scroll-indicator {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #444;
-            font-size: 1.5rem;
-            animation: bounce 2s infinite;
-            z-index: 1;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(8px); }
+            display: none;
         }
 
         /* === CONTENT === */
@@ -453,8 +445,16 @@
                 letter-spacing: 0.1em;
             }
 
+            .hero-logo {
+                width: 50px;
+            }
+
             .hero .tagline {
                 font-size: 0.8rem;
+            }
+
+            .countdown-num {
+                font-size: 2rem;
             }
 
             .hero-back {
@@ -516,9 +516,11 @@
     <section class="hero">
         <a href="https://melnichenka.com" class="hero-back">&larr; melnichenka.com</a>
 
-        <img src="img/logo.png" alt="BUSEL-1 mission logo" class="hero-logo">
-        <div class="status-badge pre-launch">Pre-Launch</div>
-        <h1>BUSEL-1</h1>
+        <div class="hero-title-row">
+            <img src="img/logo.png" alt="BUSEL-1 mission logo" class="hero-logo">
+            <h1>BUSEL-1</h1>
+            <div class="status-badge pre-launch">Pre-Launch</div>
+        </div>
         <p class="tagline">Stratospheric Science Mission</p>
 
         <div class="countdown" id="countdown">
@@ -583,10 +585,10 @@
         <!-- === ROADMAP PITCH === -->
 
         <div class="section-dark">
-            <div class="section" style="text-align: center;">
-                <h2>Three stages. One program.</h2>
-                <p style="color: #aaa; max-width: 640px; margin: 0 auto 1.5rem;">
-                    BUSEL is a student-led space science program that begins in the stratosphere and aims for interplanetary space. Every mission builds on the hardware and data from the one before it.
+            <div class="section" style="text-align: center; padding-top: 1.2rem; padding-bottom: 0.6rem;">
+                <h2 style="margin-bottom: 0.3rem; font-size: 1.3rem;">Three stages. One program.</h2>
+                <p style="color: #aaa; max-width: 640px; margin: 0 auto 0; font-size: 0.88rem;">
+                    BUSEL is a student-led space science program that begins in the stratosphere and aims for interplanetary space.
                 </p>
             </div>
             <img src="img/busel-roadmap.jpg" alt="BUSEL program roadmap: three stages from stratospheric balloon to CubeSat to deep-space probe" class="full-width-img" loading="lazy">
