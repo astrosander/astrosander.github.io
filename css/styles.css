@@ -1352,3 +1352,15 @@ body {
     color: rgba(59, 130, 246, 1);
     background-color: rgba(59, 130, 246, 0.04);
 }
+
+/* Card utilities missing from the purged Tailwind build (research page cards and groups), added 2026-11-04 */
+.border { border-width: 1px; border-style: solid; }
+.border-gray-200 { border-color: #e5e7eb; }
+.hover\:border-gray-300:hover { border-color: #d1d5db; }
+.p-5 { padding: 1.25rem; }
+.p-6 { padding: 1.5rem; }
+.mb-3 { margin-bottom: 0.75rem; }
+.mb-8 { margin-bottom: 2rem; }
+.space-y-3 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.75rem; }
+.space-y-6 > :not([hidden]) ~ :not([hidden]) { margin-top: 1.5rem; }
+.link-btn + .link-btn { margin-left: 0.5rem; }

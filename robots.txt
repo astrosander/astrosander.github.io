@@ -1,1 +1,10 @@
 User-agent: *
+Disallow: /Test/
+Disallow: /TestPdf/
+Disallow: /BiologyTest/
+Disallow: /remove-chars/
+Disallow: /KZT/
+Disallow: /slinki/
+Disallow: /notes/
+Disallow: /physics-berea/
+Disallow: /ss-ai-pilot/

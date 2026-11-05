@@ -38,12 +38,12 @@
         <p class="muted">An observer-ready statistic that recovers inertial-range slopes and cleanly separates emission- vs. Faraday-screen structure using one map at one wavelength.</p>
         <div>
           <span class="pill">Aliaksandr (Alex) Melnichenka · Berea College</span>
-          <span class="pill">Physics &amp; CS · minor in Math</span>
+          <span class="pill">Physics and Mathematics</span>
           <span class="pill">Focus: MHD turbulence · astro/plasma computation</span>
         </div>
         <div class="cta">
           <a href="https://www.youtube.com/watch?v=AiC85nf9JSw" target="_blank">Watch the UK SPS talk (10 min)</a>
-          <a href="preprint.pdf" target="_blank">Preprint (arXiv)</a>
+          <a href="https://doi.org/10.3847/1538-4357/aeac22" target="_blank">Paper (ApJ 2026)</a>
           <a href="UK_SPS_slides.pdf" target="_blank">Slides (PDF)</a>
           <a href="https://github.com/astrosander/AstroTurbulence" target="_blank">Code &amp; reproducible figures</a>
         </div>
@@ -67,8 +67,8 @@
         <ul>
           <li><strong>Directional correlation of polarization angle</strong> (operate on <em>cos&nbsp;2χ</em>, <em>sin&nbsp;2χ</em>) recovers turbulence slopes from a single band and avoids angle unwrapping; robust to interferometric high-pass filtering.</li>
           <li><strong>Crossover criterion</strong> (set by λ² and RM dispersion) tells you when spectra trace synchrotron angles vs. screen fluctuations (n<sub>e</sub>B<sub>∥</sub>).</li>
-          <li><strong>Validation</strong> on synthetic Faraday screens and <em>Athena</em> MHD cubes spanning sub- and super-Alfvénic regimes; measured slopes match ground-truth spectra across seeds.</li>
-          <li><strong>Observer recipe</strong>: measure slopes, locate crossover, apply immediately to LOFAR/MeerKAT/VLA archives; groundwork for SKA when spectral coverage is sparse.</li>
+          <li><strong>Validation</strong> on synthetic Faraday screens and <em>Athena</em> MHD cubes at sonic Mach 1 and 10; measured slopes match ground-truth spectra across seeds.</li>
+          <li><strong>Observer recipe</strong>: measure slopes, locate crossover, ready for single-frequency survey maps where multi-frequency coverage is sparse.</li>
         </ul>
         <h3>Takeaway for observers</h3>
         <p>With one map at one wavelength, you can already estimate inertial-range slopes and separate emission vs. screen structure—no RM synthesis required.</p>
@@ -76,17 +76,11 @@
 
       <div class="card">
         <h2>Reproducibility</h2>
-        <ol>
-          <li>Clone repo: <code>git clone https://github.com/astrosander/AstroTurbulence.git</code></li>
-          <li>Create env &amp; run: <code>bash reproduce.sh</code></li>
-          <li>Figures regenerate from tag <code>1.0.0</code> (commit <code>8731234</code>).</li>
-        </ol>
-        <p class="small">Includes synthetic samples, parameter file, and a minimal notebook to apply the estimator to your map.</p>
+        <p>The analysis code behind the paper's figures is on GitHub: <a href="https://github.com/astrosander/AstroTurbulence" target="_blank">astrosander/AstroTurbulence</a> (Python; synthetic Faraday screens, the directional-spectrum estimator and the AthenaK map pipeline).</p>
         <h3>Artifacts</h3>
         <ul>
-          <li><a href="Figure_gallery.ipynb" target="_blank">Figure gallery</a> (PNG/SVG)</li>
-          <li><a href="preprint.pdf" target="_blank">Methods note (2–3 pages)</a></li>
-          <li><a href="https://github.com/astrosander/AstroTurbulence" target="_blank">Synthetic data sample</a> (small)</li>
+          <li><a href="https://doi.org/10.3847/1538-4357/aeac22" target="_blank">Published paper (ApJ 1011, 16, 2026)</a></li>
+          <li><a href="https://github.com/astrosander/AstroTurbulence" target="_blank">Code and synthetic data</a></li>
         </ul>
       </div>
     </section>
@@ -102,9 +96,9 @@
       <div class="card">
         <h2>Publication status</h2>
         <ul>
-          <li><strong>Working title:</strong> Recovering 3D Magnetic Turbulence from Single-Frequency Faraday Screens</li>
+          <li><strong>Title:</strong> Recovering 3D Magnetic Turbulence from Single-frequency Faraday Screens</li>
           <li><strong>Authors:</strong> A. Melnichenka (first author), A. Lazarian, D. Pogosyan</li>
-          <li><strong>Status:</strong> manuscript in preparation; preprint targeted before AAS (Jan 2026).</li>
+          <li><strong>Status:</strong> published, <em>The Astrophysical Journal</em> 1011, 16 (2026). <a href="https://doi.org/10.3847/1538-4357/aeac22" target="_blank">doi:10.3847/1538-4357/aeac22</a></li>
         </ul>
         <!-- <p><a href="preprint.pdf" target="_blank">Preprint link</a> (add when live) · <a href="REPLACE_BIBTEX" target="_blank">BibTeX</a></p> -->
       </div>
@@ -112,9 +106,9 @@
         <h2>Talks &amp; media</h2>
         <ul>
           <li><strong>UK SPS Invited Talk</strong> (Oct 9, 2025) — video above</li>
-          <li><strong>APS DPP 2025</strong> (Virtual session) — contributed oral, Nov 19, 2025</li>
-          <li><strong>AAS #247</strong> (Jan 4–8, 2026) — abstract planned</li>
-          <li><strong>Lazarian Conference</strong> (Nov 2–7, 2025) — related turbulence work</li>
+          <li><strong>APS DPP 2025</strong> (Long Beach, CA) — contributed oral, Nov 2025</li>
+          <li><strong>AAS 247</strong> (Phoenix, Jan 2026) — oral talk, abstract 360.07</li>
+          <li><strong>The Magnetized Turbulent Universe</strong> (Playa del Carmen, Nov 2025) — invited 30-minute talk</li>
         </ul>
       </div>
     </section>
@@ -127,14 +121,14 @@
         <li><strong>Integrate with simulation pipelines</strong> (e.g., <em>Athena</em>) to stress-test sub-/super-Alfvénic regimes and publish comparison plots as a living benchmark.</li>
         <li><strong>Release an observer package</strong> (Python, pip) with one-click figure regeneration and unit-tested statistics.</li>
       </ul>
-      <p class="small">Current mentors/collaborators on related work: Alex Lazarian (UW–Madison), Dmitri Pogosyan (U. Alberta). Prior summer work at MIT: Vogelsberger group (SIDM drift/diffusion via Monte-Carlo/Langevin).</p>
+      <p class="small">Current mentors/collaborators on related work: Alex Lazarian (UW–Madison), Dmitri Pogosyan (U. Alberta). Prior work at MIT: Vogelsberger group (self-interacting dark matter kinetic theory, Monte Carlo).</p>
     </section> -->
 
     <!-- About & contact -->
     <section class="grid">
       <div class="card">
         <h2>About the author</h2>
-        <p>Belarusian student at Berea College (KY), double major in Physics &amp; Computer Science; national Physics Olympiad medalist and Presidential Award laureate. Research threads: MHD turbulence diagnostics; self-interacting dark matter (local MC/Langevin); electron-fluid instabilities.</p>
+        <p>Belarusian student at Berea College (KY), double major in Physics and Mathematics; first-degree diploma at the Belarusian National Physics Olympiad. Research threads: MHD turbulence diagnostics; Europa's thermal and orbital history; self-interacting dark matter kinetic theory; electron-fluid instabilities.</p>
       </div>
       <div class="card">
         <h2>Verification &amp; links</h2>
@@ -146,7 +140,7 @@
     </section>
 
     <footer class="muted small">
-      © <span id="y"></span> Aliaksandr Melnichenka · Last updated: <code>2025-10-09</code>.
+      © <span id="y"></span> Aliaksandr Melnichenka · Last updated: <code>2026-11-04</code>.
     </footer>
   </main>
   <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
