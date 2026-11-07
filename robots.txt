@@ -7,4 +7,3 @@ Disallow: /KZT/
 Disallow: /slinki/
 Disallow: /notes/
 Disallow: /physics-berea/
-Disallow: /ss-ai-pilot/
