@@ -118,7 +118,7 @@
                         <div class="mx-auto w-full sm:w-10/12 lg:w-full lg:col-span-2">
                            <h2 layoutid="research-title" class="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6 mt-20 lg:mt-10">Research</h2>
                            <p layoutid="research-intro" class="text-sm sm:text-base lg:w-11/12 text-justify">
-                              Below are my papers, each with a short summary and a key figure, followed by the code and my talks. In every project I do the math, write the simulations, and test the theory against them.
+                              In every project I do the math, write the simulations, and test the theory against them.
                            </p>
                            
                         </div>
@@ -212,57 +212,33 @@
                         <div class="mx-3 lg:mx-7" style="margin-top: 2.5rem;">
                            <h2 class="text-xl sm:text-2xl font-bold mb-4">Publications</h2>
                            <div class="space-y-6 mb-8">
-                              <div class="border border-gray-200 hover:border-gray-300 transition-colors p-6 rounded-lg bg-white">
+                              <div class="border border-gray-200 p-6 rounded-lg bg-white">
                                  <h4 class="font-bold text-base mb-1">1. Recovering 3D Magnetic Turbulence from Single-Frequency Faraday Screens</h4>
-                                 <p class="text-sm text-gray-600 mb-3">
-                                    <em>The Astrophysical Journal</em> 1011, 16 (2026). <a href="https://doi.org/10.3847/1538-4357/aeac22" target="_blank" class="text-accent-500 hover:underline">doi 10.3847/1538-4357/aeac22</a>
-                                 </p>
-                                 <p class="text-sm text-gray-700 mb-2">
-                                    <strong>Aliaksandr Melnichenka</strong>, Alex Lazarian, Dmitri Pogosyan
-                                 </p>
-                                 <p class="text-sm leading-relaxed text-gray-700 text-justify">
-                                    We demonstrate that three-dimensional magnetic turbulence statistics can be recovered from single-frequency radio polarimetry through the directional spectrum, an angle statistic introduced by Lazarian and Pogosyan. This method, validated against high-resolution magnetohydrodynamic simulations and controlled synthetic models, reliably extracts inertial-range scaling properties of turbulent magnetic fields. Comparative analysis with multi-frequency techniques establishes the conditions under which single-band observations suffice, providing observers with a practical framework for determining optimal frequency coverage requirements.
-                                 </p>
+                                 <p class="text-sm mb-1"><em>The Astrophysical Journal</em> 1011, 16 (2026). <a href="https://doi.org/10.3847/1538-4357/aeac22" target="_blank" class="text-accent-500 hover:underline">doi 10.3847/1538-4357/aeac22</a></p>
+                                 <p class="text-sm mb-3"><strong>Aliaksandr Melnichenka</strong>, Alex Lazarian, Dmitri Pogosyan</p>
+                                 <p class="text-sm text-justify">Tests the directional spectrum, a statistic introduced by Lazarian and Pogosyan, against MHD simulations and synthetic models, and shows when radio polarization at a single frequency is enough to measure interstellar magnetic turbulence.</p>
                                  <img src="img/directional_spectrum.png" alt="Directional spectrum from MHD simulations, with and without Faraday rotation" class="rounded-lg" style="display: block; margin: 0.75rem auto 0 auto; width: 100%; max-width: 480px;">
-                                 <p class="text-xs text-gray-500" style="margin-top: 0.35rem;">Fig. 4 of the paper. The directional spectrum from MHD simulations at two sonic Mach numbers (red and blue), without (solid) and with (dashed) Faraday rotation, compared with the expected turbulence slope.</p>
+                                 <p class="text-xs" style="margin-top: 0.35rem;">Fig. 4 of the paper, the directional spectrum without (solid) and with (dashed) Faraday rotation.</p>
                               </div>
-                              <div class="border border-gray-200 hover:border-gray-300 transition-colors p-6 rounded-lg bg-white">
+                              <div class="border border-gray-200 p-6 rounded-lg bg-white">
                                  <h4 class="font-bold text-base mb-1">2. Spontaneous Running Waves and Self-Oscillatory Transport in Dirac Fluids</h4>
-                                 <p class="text-sm text-gray-600 mb-3">
-                                    <a href="https://arxiv.org/abs/2512.16571" target="_blank" class="text-accent-500 hover:underline">arXiv 2512.16571</a> (In revision at Physical Review Letters)
-                                 </p>
-                                 <p class="text-sm text-gray-700 mb-2">
-                                    Prayoga Liong*, <strong>Aliaksandr Melnichenka</strong>*, Anton Bukhtatyi, Albert Bilous, Leonid Levitov (* Equal contribution)
-                                 </p>
-                                 <p class="text-sm leading-relaxed text-gray-700 text-justify">
-                                    We demonstrate that ultra-clean electronic materials, such as graphene, exhibit hydrodynamic instabilities analogous to thin fluid films. Above a critical drive, the flow becomes unstable and develops self-sustained traveling waves. These waves manifest as coupled oscillations of electron density and current, producing both a non-analytic transition in the average current and a narrow-band, tunable high-frequency signal. This work establishes a new mechanism for generating and controlling high-frequency electronic oscillations through collective fluid-like behavior, distinct from conventional circuit-based approaches.
-                                 </p>
-                                 <img src="img/running_waves_fig3.png" alt="Modulation amplitude and time-averaged current versus drift velocity, with the running-wave density profile and the current-voltage kink as insets" class="rounded-lg" style="display: block; margin: 0.75rem auto 0 auto; width: 100%; max-width: 480px;">
-                                 <p class="text-xs text-gray-500" style="margin-top: 0.35rem;">From my simulations (Fig. 3 of the manuscript). Modulation amplitude and time-averaged current versus drift velocity, with the self-sustained pulse train in the inset.</p>
+                                 <p class="text-sm mb-1"><a href="https://arxiv.org/abs/2512.16571" target="_blank" class="text-accent-500 hover:underline">arXiv 2512.16571</a>, in revision at Physical Review Letters</p>
+                                 <p class="text-sm mb-3">Prayoga Liong*, <strong>Aliaksandr Melnichenka</strong>*, Anton Bukhtatyi, Albert Bilous, Leonid Levitov (* Equal contribution)</p>
+                                 <p class="text-sm text-justify">Above a critical current, electron flow in clean graphene becomes unstable and breaks into self-sustained running waves, which give a tunable high-frequency signal.</p>
+                                 <img src="img/running_waves_fig3.png" alt="Modulation amplitude and time-averaged current versus drift velocity" class="rounded-lg" style="display: block; margin: 0.75rem auto 0 auto; width: 100%; max-width: 480px;">
+                                 <p class="text-xs" style="margin-top: 0.35rem;">Fig. 3 of the manuscript, from my simulations.</p>
                               </div>
-                              <div class="border border-gray-200 hover:border-gray-300 transition-colors p-6 rounded-lg bg-white">
+                              <div class="border border-gray-200 p-6 rounded-lg bg-white">
                                  <h4 class="font-bold text-base mb-1">3. Numerical Tests of Directional Statistics and Polarization Zeros in Mixed Emitting and Faraday-Rotating Turbulence</h4>
-                                 <p class="text-sm text-gray-600 mb-3">
-                                    In preparation for The Astrophysical Journal (2026)
-                                 </p>
-                                 <p class="text-sm text-gray-700 mb-2">
-                                    <strong>Aliaksandr Melnichenka</strong>, Alex Lazarian, Dmitri Pogosyan
-                                 </p>
-                                 <p class="text-sm leading-relaxed text-gray-700 text-justify">
-                                    The published paper treats synchrotron emission and Faraday rotation as separate regions. This one tests the Lazarian and Pogosyan predictions for the harder case where they share the same volume, including the places where the polarization vanishes, using MHD simulations and synthetic fields, with the line of sight both along and across the mean field.
-                                 </p>
+                                 <p class="text-sm mb-1">In preparation for The Astrophysical Journal (2026)</p>
+                                 <p class="text-sm mb-3"><strong>Aliaksandr Melnichenka</strong>, Alex Lazarian, Dmitri Pogosyan</p>
+                                 <p class="text-sm text-justify">Extends the tests to the harder case where synchrotron emission and Faraday rotation share the same volume, including the points where the polarization vanishes.</p>
                               </div>
-                              <div class="border border-gray-200 hover:border-gray-300 transition-colors p-6 rounded-lg bg-white">
+                              <div class="border border-gray-200 p-6 rounded-lg bg-white">
                                  <h4 class="font-bold text-base mb-1">4. Has Europa Always Hosted an Ocean?</h4>
-                                 <p class="text-sm text-gray-600 mb-3">
-                                    In preparation (2026)
-                                 </p>
-                                 <p class="text-sm text-gray-700 mb-2">
-                                    <strong>Aliaksandr Melnichenka</strong>, Amirhossein Bagheri, Jim Fuller
-                                 </p>
-                                 <p class="text-sm leading-relaxed text-gray-700 text-justify">
-                                    Europa's ocean is a target in the search for life, and it is usually assumed to be as old as the moon. I added an ocean-free start and dehydration of the rock to Dr. Bagheri's coupled thermal and orbital model of Europa in the Laplace resonance, and explored its histories against what is measured today. The question is whether that ocean is primordial or billions of years younger, which NASA's Europa Clipper mission can help settle.
-                                 </p>
+                                 <p class="text-sm mb-1">In preparation (2026)</p>
+                                 <p class="text-sm mb-3"><strong>Aliaksandr Melnichenka</strong>, Amirhossein Bagheri, Jim Fuller</p>
+                                 <p class="text-sm text-justify">Asks whether Europa's ocean is as old as the moon or formed billions of years later, using Dr. Bagheri's coupled thermal and orbital model with an ocean-free start.</p>
                               </div>
                            </div>
                         </div>
@@ -270,84 +246,25 @@
                         <!-- Code -->
                         <div class="mx-3 lg:mx-7 mt-10">
                            <h2 class="text-xl sm:text-2xl font-bold mb-4">Code</h2>
-                           <div class="space-y-3 mb-8">
-                              <p class="text-sm text-gray-700"><a href="https://github.com/astrosander/AstroTurbulence" target="_blank" class="text-accent-500 hover:underline font-semibold">AstroTurbulence</a>. Python. Synthetic Faraday screens, the directional-spectrum estimator and the AthenaK map pipeline behind the ApJ paper.</p>
-                              <p class="text-sm text-gray-700"><a href="https://github.com/astrosander/electronic-kapitsa-waves" target="_blank" class="text-accent-500 hover:underline font-semibold">electronic-kapitsa-waves</a>. Python. Fourier pseudospectral solver for the one-dimensional hydrodynamic model of a Dirac fluid, with the parameter scans behind the Physical Review Letters manuscript.</p>
-                              <p class="text-sm text-gray-700"><a href="https://github.com/astrosander/SIDM_Transport_Theory_vs_MC" target="_blank" class="text-accent-500 hover:underline font-semibold">SIDM_Transport_Theory_vs_MC</a>. Python with Numba. Hénon velocity diffusion coefficients to third order, Monte Carlo validation, and an orbit-averaged loss-cone Monte Carlo after Shapiro and Marchant (1978).</p>
+                           <div class="space-y-3 mb-8 text-sm">
+                              <p><a href="https://github.com/astrosander/AstroTurbulence" target="_blank" class="text-accent-500 hover:underline" style="font-weight:700">AstroTurbulence</a>. Code and synthetic data behind the ApJ paper.</p>
+                              <p><a href="https://github.com/astrosander/electronic-kapitsa-waves" target="_blank" class="text-accent-500 hover:underline" style="font-weight:700">electronic-kapitsa-waves</a>. Solver and parameter scans behind the Physical Review Letters manuscript.</p>
+                              <p><a href="https://github.com/astrosander/SIDM_Transport_Theory_vs_MC" target="_blank" class="text-accent-500 hover:underline" style="font-weight:700">SIDM_Transport_Theory_vs_MC</a>. Dark matter transport coefficients and Monte Carlo checks, from my earlier project in Mark Vogelsberger's group at the MIT Kavli Institute.</p>
                            </div>
                         </div>
 
-                        <!-- Talks & Presentations -->
+                        <!-- Talks -->
                         <div class="mx-3 lg:mx-7 mt-10">
                            <h2 class="text-xl sm:text-2xl font-bold mb-4">Talks and Posters</h2>
-                           <div class="space-y-6 mb-8">
-                              <div class="border border-gray-200 hover:border-gray-300 transition-colors p-6 rounded-lg bg-white">
-                                 <h4 class="font-bold text-base mb-1">1. American Astronomical Society Meeting 247 (AAS 2026)</h4>
-                                 <p class="text-sm text-gray-600 mb-3">
-                                    Single-frequency Faraday-screen tomography, a practical route to 3-D magnetic turbulence with one map (January 2026, Phoenix, AZ, oral, abstract 360.07)
-                                 </p>
-                                 <p class="text-sm leading-relaxed text-gray-700 text-justify mb-4">
-                                    Presentation on the directional spectrum diagnostic for recovering three-dimensional magnetic turbulence statistics from single-frequency polarization maps.
-                                 </p>
-                                 <a href="https://www.youtube.com/watch?v=NxfLodD7GAI" target="_blank" class="link-btn">View Recording</a>
-                              </div>
-                              
-                              <div class="border border-gray-200 hover:border-gray-300 transition-colors p-6 rounded-lg bg-white">
-                                 <h4 class="font-bold text-base mb-1">2. The Magnetized Turbulent Universe, a Conference Honoring Alex Lazarian (Invited Talk)</h4>
-                                 <p class="text-sm text-gray-600 mb-3">
-                                    Single-Frequency Faraday Tomography of 3D Magnetic Turbulence (November 2025, Playa del Carmen, Mexico)
-                                 </p>
-                                 <p class="text-sm leading-relaxed text-gray-700 text-justify mb-4">
-                                    Invited 30-minute talk at an international conference honoring Prof. Alex Lazarian. I presented the directional spectrum diagnostic and crossover scaling analysis, covering synthetic validation tests and MHD simulation results. I was one of the only undergraduates presenting alongside faculty and postdocs.
-                                 </p>
-                              </div>
-
-                              <div class="border border-gray-200 hover:border-gray-300 transition-colors p-6 rounded-lg bg-white">
-                                 <h4 class="font-bold text-base mb-1">3. American Physical Society Division of Plasma Physics (APS DPP 2025)</h4>
-                                 <p class="text-sm text-gray-600 mb-3">
-                                    Undergraduate-Led High-Resolution MHD Validation of Lazarian-Pogosyan Faraday Turbulence Theory (November 2025, Long Beach, CA)
-                                 </p>
-                                 <p class="text-sm leading-relaxed text-gray-700 text-justify mb-4">
-                                    Contributed oral presentation of a high-resolution magnetohydrodynamic validation of the Lazarian-Pogosyan Faraday turbulence theory, demonstrating how single-band radio polarimetry can constrain inertial-range magnetic turbulence properties.
-                                 </p>
-                                 <a href="https://www.youtube.com/watch?v=4Ne0LyWSAVQ&t=4s" target="_blank" class="link-btn">View Recording</a>
-                              </div>
-                              
-                              <div class="border border-gray-200 hover:border-gray-300 transition-colors p-6 rounded-lg bg-white">
-                                 <h4 class="font-bold text-base mb-1">4. University of Kentucky Society of Physics Students (Invited Talk)</h4>
-                                 <p class="text-sm text-gray-600 mb-3">
-                                    Recovering 3D Magnetic Turbulence from a Single Polarization Map (October 2025, Lexington, KY)
-                                 </p>
-                                 <p class="text-sm leading-relaxed text-gray-700 text-justify mb-4">
-                                    Invited talk on whether a single polarization image at one wavelength can constrain inertial-range magnetic turbulence. Presented the directional spectrum, a polarization-angle statistic that recovers turbulence scaling properties and separates emission-dominated from Faraday-screen structure in a single-frequency map.
-                                 </p>
-                                 <div class="flex flex-wrap gap-4">
-                                    <a href="https://www.youtube.com/watch?v=AiC85nf9JSw&t=3s" target="_blank" class="link-btn">View Recording</a>
-                                    <a href="https://melnichenka.com/turbulence/" target="_blank" class="link-btn">Slides</a>
-                                    <a href="https://github.com/astrosander/AstroTurbulence" target="_blank" class="link-btn">Code</a>
-                                 </div>
-                              </div>
-                              <div class="border border-gray-200 hover:border-gray-300 transition-colors p-6 rounded-lg bg-white">
-                                 <h4 class="font-bold text-base mb-1">5. Physics Congress (PhysCon), Society of Physics Students</h4>
-                                 <p class="text-sm text-gray-600 mb-3">
-                                    Recovering 3-D Magnetic Turbulence from a Single Polarization Map (November 2025, Denver, CO, poster 321)
-                                 </p>
-                                 <p class="text-sm leading-relaxed text-gray-700 text-justify">
-                                    Poster on the single-frequency Faraday-screen method and its validation on synthetic and MHD maps.
-                                 </p>
-                              </div>
-                              <div class="border border-gray-200 hover:border-gray-300 transition-colors p-6 rounded-lg bg-white">
-                                 <h4 class="font-bold text-base mb-1">6. Caltech SURF final presentation</h4>
-                                 <p class="text-sm text-gray-600 mb-3">
-                                    Has Europa Always Hosted an Ocean? (August 2026, Pasadena, CA)
-                                 </p>
-                                 <p class="text-sm leading-relaxed text-gray-700 text-justify">
-                                    Summer Undergraduate Research Fellowship talk on Europa's coupled thermal and orbital evolution with Prof. Jim Fuller and Dr. Amirhossein Bagheri.
-                                 </p>
-                              </div>
-                           </div>
+                           <ul class="text-sm space-y-3 mb-8" style="list-style: none; padding: 0;">
+                              <li>American Astronomical Society, 247th Meeting, Phoenix, January 2026. Oral talk. <a href="https://www.youtube.com/watch?v=NxfLodD7GAI" target="_blank" class="text-accent-500 hover:underline">Recording</a></li>
+                              <li>The Magnetized Turbulent Universe, a conference honoring Alex Lazarian, Playa del Carmen, November 2025. Invited 30-minute talk.</li>
+                              <li>APS Division of Plasma Physics, 67th Annual Meeting, Long Beach, November 2025. Contributed talk. <a href="https://www.youtube.com/watch?v=4Ne0LyWSAVQ" target="_blank" class="text-accent-500 hover:underline">Recording</a></li>
+                              <li>University of Kentucky Society of Physics Students, Lexington, October 2025. Invited talk. <a href="https://www.youtube.com/watch?v=AiC85nf9JSw" target="_blank" class="text-accent-500 hover:underline">Recording</a>, <a href="/turbulence/" class="text-accent-500 hover:underline">talk page</a></li>
+                              <li>Physics Congress (PhysCon), Society of Physics Students, Denver, November 2025. Poster.</li>
+                              <li>Caltech SURF final presentation, Pasadena, August 2026.</li>
+                           </ul>
                         </div>
-
                      </div>
                   </div>
                </main>
