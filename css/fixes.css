@@ -81,3 +81,6 @@
 .icon-row { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.25rem; margin: 1.25rem 0; }
 .icon-cell { width: 24px; height: 24px; flex: 0 0 24px; }
 .icon-cell svg { display: block; width: 24px; height: 24px; overflow: visible; }
+
+/* Paper and code buttons inside research cards: black text, blue on hover. */
+.link-btn { color: #000; }
