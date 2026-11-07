@@ -74,5 +74,5 @@
 
 /* Main card on Home, Research and Leadership: wider than the original 8/12, capped for long lines. */
 @media (min-width: 768px) {
-   .site-card { width: 83.333%; max-width: 88rem; }
+   .site-card { width: 75%; max-width: 80rem; }
 }
