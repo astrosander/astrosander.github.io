@@ -26,3 +26,6 @@
 @media (min-width: 1024px) {
    h2[layoutid="index-title"] { margin-top: 0; }
 }
+
+/* All body text in black (no grey steps between lines). Links keep their accent colour. */
+.text-gray-500, .text-gray-600, .text-gray-700, .text-gray-800, .text-gray-900 { color: #000; }
