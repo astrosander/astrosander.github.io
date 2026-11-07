@@ -29,3 +29,9 @@
 
 /* All body text in black (no grey steps between lines). Links keep their accent colour. */
 .text-gray-500, .text-gray-600, .text-gray-700, .text-gray-800, .text-gray-900 { color: #000; }
+
+/* Research hero image: about the height of the title plus intro paragraph beside it. */
+.research-hero-img { display: block; width: auto; height: 9rem; margin: 0 auto; }
+@media (min-width: 1024px) {
+   .research-hero-img { height: auto; width: 100%; max-width: 15rem; }
+}
