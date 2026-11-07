@@ -15,3 +15,9 @@
 @media (max-width: 639px) {
    .home-section { padding-left: 0; }
 }
+.space-y-3 > * + * { margin-top: 0.75rem; }
+.border-b { border-bottom-width: 1px; }
+.border-gray-200 { border-color: #e5e7eb; }
+.py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+.gap-x-8 { column-gap: 2rem; }
+.gap-y-2 { row-gap: 0.5rem; }
