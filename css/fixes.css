@@ -21,3 +21,8 @@
 .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
 .gap-x-8 { column-gap: 2rem; }
 .gap-y-2 { row-gap: 0.5rem; }
+
+/* Home: name heading top aligned with the photo on the two-column desktop layout. */
+@media (min-width: 1024px) {
+   h2[layoutid="index-title"] { margin-top: 0; }
+}
