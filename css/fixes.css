@@ -30,10 +30,14 @@
 /* All body text in black (no grey steps between lines). Links keep their accent colour. */
 .text-gray-500, .text-gray-600, .text-gray-700, .text-gray-800, .text-gray-900 { color: #000; }
 
-/* Research hero image: about the height of the title plus intro paragraph beside it. */
-.research-hero-img { display: block; width: auto; height: 9rem; margin: 0 auto; }
+/* Research hero: image sits next to the title block and matches its height. */
+.research-hero { align-items: center; }
+.research-hero-media { display: flex; justify-content: center; }
+.research-hero-img { display: block; width: auto; height: 9rem; }
 @media (min-width: 1024px) {
-   .research-hero-img { height: 9.5rem; }
+   .research-hero { align-items: stretch; }
+   .research-hero-media { position: relative; }
+   .research-hero-img { position: absolute; top: 0; right: 2.5rem; height: 100%; width: auto; max-width: calc(100% - 2.5rem); object-fit: contain; }
 }
 
 /* Leadership: Savchenko Solutions header, volunteer collage next to the logotype. */
@@ -52,13 +56,12 @@
 .belso-header > a { flex-shrink: 0; }
 .belso-header h2 { margin: 0; }
 @media (min-width: 768px) {
-   .belso-header { flex-wrap: nowrap; justify-content: flex-start; }
+   .belso-header { flex-wrap: nowrap; justify-content: center; }
    .belso-logo { height: 4.75rem; }
 }
 
-/* Leadership: stat tiles. Black text, proportional figures, light border like the research cards. */
-.stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; margin-bottom: 1.5rem; }
+/* Leadership: key numbers. Borderless grid of large figures with short labels. */
+.stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem 1.5rem; margin: 0.5rem 0 1.75rem 0; }
 @media (min-width: 768px) { .stats { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
-.stat { border: 1px solid #e5e7eb; border-radius: 0.5rem; padding: 0.75rem 1rem; }
-.stat-value { font-size: 1.75rem; font-weight: 700; line-height: 1.15; color: #000; }
-.stat-label { font-size: 0.875rem; line-height: 1.3; color: #000; margin-top: 0.15rem; }
+.stat-value { font-size: 2rem; font-weight: 700; line-height: 1.1; color: #000; letter-spacing: -0.01em; }
+.stat-label { font-size: 0.875rem; line-height: 1.35; color: #000; margin-top: 0.25rem; }
