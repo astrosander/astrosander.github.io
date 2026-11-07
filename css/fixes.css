@@ -11,7 +11,11 @@
 
 /* Home page: Publications, Talks, Awards, News. Readable line length on desktop,
    full width on phones (the 4rem indent ate a quarter of a phone screen). */
-.home-section { padding-left: 4rem; max-width: 56rem; }
+.home-section { padding-left: 4rem; }
+@media (min-width: 1024px) {
+   /* right edge in line with the intro paragraph (col-span-2 at 11/12 width ends at 94.4% of the card) */
+   .home-section { padding-right: 5.56%; }
+}
 @media (max-width: 639px) {
    .home-section { padding-left: 0; }
 }
@@ -67,3 +71,8 @@
 @media (min-width: 768px) { .stats { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 .stat-value { font-size: 2rem; font-weight: 700; line-height: 1.1; color: #000; letter-spacing: -0.01em; }
 .stat-label { font-size: 0.875rem; line-height: 1.35; color: #000; margin-top: 0.25rem; }
+
+/* Main card on Home, Research and Leadership: wider than the original 8/12, capped for long lines. */
+@media (min-width: 768px) {
+   .site-card { width: 83.333%; max-width: 88rem; }
+}
