@@ -44,8 +44,10 @@
 .ss-header { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1rem 2.5rem; margin-bottom: 1.5rem; }
 .ss-team { height: 11rem; width: auto; }
 .ss-title { margin: 0; }
+.ss-divider { width: 1px; height: 7rem; background: #d1d5db; }
 .ss-logotype { height: 3.4rem; width: auto; max-width: 100%; display: block; }
 @media (max-width: 639px) {
+   .ss-divider { display: none; }
    .ss-team { height: 9rem; }
    .ss-logotype { height: auto; width: 16rem; }
 }
