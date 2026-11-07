@@ -76,3 +76,8 @@
 @media (min-width: 768px) {
    .site-card { width: 75%; max-width: 80rem; }
 }
+
+/* Home: icon row. Fixed spacing so every icon sits on whole pixels; svg overflow visible so no edge is clipped. */
+.icon-row { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.25rem; margin: 1.25rem 0; }
+.icon-cell { width: 24px; height: 24px; flex: 0 0 24px; }
+.icon-cell svg { display: block; width: 24px; height: 24px; overflow: visible; }
